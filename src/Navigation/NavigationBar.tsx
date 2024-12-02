@@ -1,5 +1,6 @@
 ﻿import "./Navigation.css"
 import {useNavigate} from "react-router-dom";
+import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 export type NavigationElementData = {
     name: string;
@@ -29,7 +30,7 @@ export const NavigationBar = (props: { elements: NavigationElementData[] }) => {
     return (
         <div className={"nav-bar"}>
             <div>
-                Nav Bar Title
+                <LocalizedLabel labelKey={"navigation_title"}/>
             </div>
             <div className={"nav-buttons-container"}>
                 {props.elements.map((element, index) => {

@@ -39,12 +39,15 @@ export const LoginComponent = (props: LoginComponentParams) => {
     }, [props, isGettingCache]);
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: any) => {
+
+        if (e) e.preventDefault();
+
         console.log("submitting login");
         try {
             // todo: hacer validaciones localmente (tengo que actualizar la tabla de labels)
             // todo: ver si le hago un highlight de error al campo que está mal, o solo uso el mensaje de error
-            
+
             const result = await loginUser(userName, password);
 
             if (result === "ok") {
@@ -70,7 +73,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
     }
 
     return (
-        <div className={"login-card"}>
+        <form onSubmit={handleSubmit} className={"login-card"}>
             <h1><LocalizedLabel labelKey={"login_title"}/></h1>
 
             <div className={"login-entry"}>
@@ -83,7 +86,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
                         setUserName(e.target.value);
                         setError('');
                     }}
-                    onSubmit={handleSubmit}
+                    
                 />
             </div>
             <div className={"login-entry"}>
@@ -97,7 +100,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
                         setPassword(e.target.value);
                         setError('');
                     }}
-                    onSubmit={handleSubmit}
+                    
                 />
             </div>
 
@@ -113,7 +116,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
                     className={"login-error"}
                 />}
 
-        </div>
+        </form>
     )
 
 
