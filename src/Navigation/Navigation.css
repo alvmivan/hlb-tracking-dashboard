@@ -1,0 +1,45 @@
+﻿.nav-bar {
+    background-color: #ffffff05;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+
+    padding: 10px;
+    height: 5vh;
+    min-height: 4vh;
+    display: flex;
+
+}
+
+.nav-bar-title {
+
+}
+
+.nav-buttons-container {
+    margin-left: auto;
+    display: flex;
+    justify-items: left;
+
+}
+
+.nav-button {
+    padding: 4px;
+    margin: 1px 8px 1px 8px;
+    
+    
+    
+    
+    border: 1px solid #0000;
+    border-radius: 1px;
+    
+    background-color: #ffffff11;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);   
+    
+    font-size: 1.1em;
+    font-weight: 200;
+    
+     
+    /*cursor: pointer;*/
+    /*transition: 0.3s;*/
+    
+}
+

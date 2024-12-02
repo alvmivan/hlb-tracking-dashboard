@@ -1,11 +1,29 @@
-import './App.css'
-import {Routes} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {Route, Routes} from "react-router-dom";
 import {LoginComponent} from "./Auth/Login.tsx";
 import {runInitialization} from "./Initialization/initializationSteps.ts";
+import {HomeScreen} from "./Home/HomeScreen.tsx";
+import {NavigationBar} from "./Navigation/NavigationBar.tsx";
+import {useEffect, useState} from "react";
 
 
-function App() {
+const navigationElements = [
+    {name: "Home", url: "/"},
+    {name: "About", url: "/about"},
+    {name: "Contact", url: "/contact"},
+]
+
+const AppContent = () => <>
+    <NavigationBar
+        elements={navigationElements}
+    />
+    <Routes>
+        <Route path="/" element={<HomeScreen/>}/>
+        <Route path="/about" element={<div>About</div>}/>
+        <Route path="/contact" element={<div>Contact</div>}/>
+    </Routes>
+</>;
+
+const App = () => {
 
     const [preAuthInitializationCompleted, setPreAuthInitializationCompleted] = useState(false);
     const [postAuthInitializationCompleted, setPostAuthInitializationCompleted] = useState(false);
@@ -33,31 +51,12 @@ function App() {
         initialization().then();
     }, [preAuthInitializationCompleted, postAuthInitializationCompleted, isLogged]);
 
-    if (!preAuthInitializationCompleted) {
-        // esto no puede usar localization, porque no está inicializado aún 🥵
-        return <div>Cargando...</div>
-    }
+    const loadingElement = <div>Cargando...</div>;
 
-    if (!isLogged) {
-        return (
-            <>
-                <LoginComponent
-                    setIsLogged={setIsLogged}
-                />
-            </>
-        )
-    }
-
-    if (!postAuthInitializationCompleted) {
-        return <div>Cargando...</div>
-    }
-
-    return (
-        <Routes>
-            {/*<Route path="/" element={<Home/>}/>*/}
-            {/*<Route path="/about" element={<About/>}/>*/}
-        </Routes>
-    )
-}
+    if (!preAuthInitializationCompleted) return loadingElement
+    if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>
+    if (!postAuthInitializationCompleted) return loadingElement
+    return <AppContent></AppContent>
+};
 
 export default App
