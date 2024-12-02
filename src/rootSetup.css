@@ -1,0 +1,21 @@
+/*Font Setup*/
+:root {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "YTLC" 500;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/*Color Setup*/
+:root {
+    line-height: 1.5;
+    color-scheme: dark;
+    color: #fafafade;
+    background-color: #202324;
+}

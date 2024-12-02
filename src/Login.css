@@ -1,0 +1,70 @@
+﻿
+.login-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 2px;
+    background-color: #ffffff05;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/*esto va a ser para cada entrada de input (usuario y pass) , van a ser child de login-card*/
+/* acá solo vamos a darle el estilo interno (para el texto y el input)*/
+.login-entry {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    height: 10vh;
+    min-height: 10vh;
+    max-height: 15vh;
+    width: 100%;
+}
+
+
+/* que el form tenga un alto de 45px*/
+.login-entry-form {
+    height: 45px;
+    width: 100%;
+
+}
+
+.login-entry-form::placeholder {
+    padding: 10px;
+/*    italica*/
+    font-style: italic;
+    color: #ffffff;
+    opacity: 0.1;
+}
+
+.login-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    height: 10vh;
+    min-height: 4vh;
+    max-height: 6vh;
+    width: 80%;
+}
+
+.login-error{
+
+    border: 2px solid #ff000050;
+    background-color: #ff000005;
+    font-size: 1rem;
+    /*make font ultra thin*/
+    font-weight: 100;
+    
+    color: #f00;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}

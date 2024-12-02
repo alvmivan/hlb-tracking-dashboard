@@ -1,0 +1,25 @@
+﻿import {getLocalizationTable} from "hlb-api-library/src/localization/domain/localizationService.ts";
+
+const localizationCache: Map<string, string> = new Map();
+
+
+type LocalizationTable = {
+    language?: string,
+    entries: { key: string, value: string }[ ]
+};
+
+export const localizeKey = (key: string) => {
+
+    let localizationTable: LocalizationTable = {entries: [{key: "", value: ""}]};
+    if (localizationCache.size === 0) {
+        localizationTable = getLocalizationTable();
+        const entries = localizationTable.entries;
+        entries.forEach((entry) => localizationCache.set(entry.key, entry.value));
+    }
+
+    if (localizationCache.has(key)) return localizationCache.get(key);
+
+    console.warn(key + " not found in localization table ", localizationTable);
+    return "<< " + key + " >>";
+
+}
