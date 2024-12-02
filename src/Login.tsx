@@ -41,7 +41,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
 
 
     const handleSubmit = async () => {
-
+        console.log("submitting login");
         try {
             // todo: hacer validaciones localmente (tengo que actualizar la tabla de labels)
             // todo: ver si le hago un highlight de error al campo que está mal, o solo uso el mensaje de error
@@ -84,6 +84,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
                         setUserName(e.target.value);
                         setError('');
                     }}
+                    onSubmit={handleSubmit}
                 />
             </div>
             <div className={"login-entry"}>
@@ -97,6 +98,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
                         setPassword(e.target.value);
                         setError('');
                     }}
+                    onSubmit={handleSubmit}
                 />
             </div>
 

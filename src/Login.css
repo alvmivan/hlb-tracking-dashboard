@@ -18,9 +18,9 @@
 .login-entry {
 
     display: flex;
-    flex-direction: column;
+    
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 10px;
     height: 10vh;
     min-height: 10vh;
     max-height: 15vh;
@@ -32,7 +32,8 @@
 .login-entry-form {
     height: 45px;
     width: 100%;
-
+    padding: 10px;
+    
 }
 
 .login-entry-form::placeholder {
