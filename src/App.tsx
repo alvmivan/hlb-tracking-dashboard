@@ -1,8 +1,8 @@
 import './App.css'
 import {Routes} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {LoginComponent} from "./Login.tsx";
-import {runInitialization} from "./initializationSteps.ts";
+import {LoginComponent} from "./Auth/Login.tsx";
+import {runInitialization} from "./Initialization/initializationSteps.ts";
 
 
 function App() {

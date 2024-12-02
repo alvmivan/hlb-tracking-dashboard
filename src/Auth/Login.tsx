@@ -1,10 +1,9 @@
 ﻿import React, {useEffect} from 'react';
 import {loginUser, validateSession} from "hlb-api-library/src/auth/domain/userServices.ts";
-import {ErrorData, handleError, sendPost} from "hlb-api-library/src/shared/connectionUtils.ts";
-import {LocalizedLabel} from "./LocalizedLabel.tsx";
+import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 import './Login.css';
-import {localizeKey} from "./LocalizeKey.ts";
+import {localizeKey} from "../Localization/LocalizeKey.ts";
 
 interface LoginComponentParams {
     setIsLogged: (isLogged: boolean) => void

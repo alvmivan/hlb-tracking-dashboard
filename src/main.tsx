@@ -1,6 +1,6 @@
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
-import './rootSetup.css'
+import './rootStyle.css'
 import App from './App.tsx'
 import {configSettings} from "hlb-api-library/src/shared/appContext.ts";
 
