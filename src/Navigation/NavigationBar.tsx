@@ -34,7 +34,7 @@ export const NavigationBar = (props: { elements: NavigationElementData[] }) => {
         </>
     );
     return (
-        <div className={"nav-bar"}>
+        <div className={"nav-bar style-card-05 style-content-flex "}>
             <div className={"nav-bar-title"}>
                 <img src={"/hlb_mini.png"} className={"nav-bar-image"}/>
                 <LocalizedLabel labelKey={"navigation_title"}/>

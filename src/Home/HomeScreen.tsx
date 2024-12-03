@@ -1,8 +1,8 @@
-﻿import React from "react";
+﻿import React from "react"; 
 
 export const HomeScreen: React.FC = () => {
-    return (<>
 
-        </>
-    )
+    return (<div>
+        Home Screen
+    </div>);
 }

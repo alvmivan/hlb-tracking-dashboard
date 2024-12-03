@@ -1,15 +1,12 @@
 ﻿.nav-bar {
-    background-color: #ffffff05;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+/*    background-color: #ffffff05;*/
+/*    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);*/
 
 
     padding: 10px;
     height: 5vh;
     min-height: 4vh;
-    display: flex;
     
-    justify-items: center;
-    justify-content: flex-start;
 
 }
 

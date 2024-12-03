@@ -1,0 +1,86 @@
+﻿/* Cards con transparencia*/
+.style-card-05 {
+    background-color: #ffffff05;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-10 {
+    background-color: #ffffff10;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-15 {
+    background-color: #ffffff15;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-20 {
+    background-color: #ffffff20;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-25 {
+    background-color: #ffffff25;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-30 {
+    background-color: #ffffff30;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-35 {
+    background-color: #ffffff35;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-40 {
+    background-color: #ffffff40;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-45 {
+    background-color: #ffffff45;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.style-card-50 {
+    background-color: #ffffff50;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.style-no-border {
+    border: 1px solid #ffffff00;
+}
+
+
+/* locations */
+
+.style-location-bottom {
+
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+
+}
+
+.style-location-top {
+
+    position: fixed;
+    top: 10px;
+    width: 100vw;
+
+}
+
+/*content definition*/
+.style-content-flex {
+    display: flex;
+
+
+    align-items: center;
+
+
+    justify-items: center;
+    justify-content: flex-start;
+}
