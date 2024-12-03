@@ -2,16 +2,10 @@
 
 
 
-export const LocalizedLabel = (props: { labelKey: string, className?: string }) => {
+export const LocalizedLabel = (props: { labelKey: string, className?: string , style?:any}) => {
 
-    //si no tiene classname usar un frag, sino usar un div
-    if (props.className) {
-        return (<div className={props.className}>
-            {localizeKey(props.labelKey)}
-        </div>);
-    }
-    return (<>
+    return (<span style={props.style} className={props.className}>
         {localizeKey(props.labelKey)}
-    </>);
+    </span>);
 
 }

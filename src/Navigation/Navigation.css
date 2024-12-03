@@ -7,10 +7,33 @@
     height: 5vh;
     min-height: 4vh;
     display: flex;
+    
+    justify-items: center;
+    justify-content: flex-start;
+
+}
+
+
+.nav-bar-image {
+    padding: 5px;
+    width: 40px;
+/*    greyscale*/
+    
+    
+    transition: filter 0.2s;
 
 }
 
 .nav-bar-title {
+
+    padding-left: 20px;
+    align-self: center;
+    font-size: 1.3em;
+
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
 
 }
 
@@ -24,22 +47,27 @@
 .nav-button {
     padding: 4px;
     margin: 1px 8px 1px 8px;
-    
-    
-    
-    
+
+
     border: 1px solid #0000;
     border-radius: 1px;
-    
+
     background-color: #ffffff11;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);   
-    
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
     font-size: 1.1em;
     font-weight: 200;
-    
-     
-    /*cursor: pointer;*/
-    /*transition: 0.3s;*/
-    
+
+
+    cursor: pointer;
+    transition: background-color  0.2s, box-shadow  0.2s;
+
+
+}
+
+.nav-button:hover {
+    background-color: #ffffff22;
+    box-shadow: 0 0 15px 0 rgba(0,0,0, 0.9);
+    transition: background-color 0.2s, box-shadow 0.2s;    
 }
 

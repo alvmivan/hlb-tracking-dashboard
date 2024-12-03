@@ -11,7 +11,6 @@ export type NavigationElementData = {
 export const NavigationElement = (props: { element: NavigationElementData }) => {
     const navigate = useNavigate();
 
-    
 
     return (
         <button
@@ -24,18 +23,21 @@ export const NavigationElement = (props: { element: NavigationElementData }) => 
     )
 }
 
-
 export const NavigationBar = (props: { elements: NavigationElementData[] }) => {
 
+    const elements = props.elements.map((element, index) =>
+        <>
+            <NavigationElement key={index} element={element}/>
+        </>
+    );
     return (
         <div className={"nav-bar"}>
-            <div>
+            <div className={"nav-bar-title"}>
+                <img src={"/hlb_mini.png"} className={"nav-bar-image"}/>
                 <LocalizedLabel labelKey={"navigation_title"}/>
             </div>
             <div className={"nav-buttons-container"}>
-                {props.elements.map((element, index) => {
-                    return <NavigationElement key={index} element={element}/>
-                })}
+                {elements}
             </div>
         </div>
     )
