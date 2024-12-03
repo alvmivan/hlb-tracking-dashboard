@@ -5,19 +5,22 @@ import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 export type NavigationElementData = {
     name: string;
     url: string;
+    nameIsLocalizationKey?: boolean;
 }
 
 
 export const NavigationElement = (props: { element: NavigationElementData }) => {
     const navigate = useNavigate();
 
+    const name = props.element.nameIsLocalizationKey ?
+        <LocalizedLabel labelKey={props.element.name}/> : props.element.name;
 
     return (
         <button
             className={"nav-button"}
             onClick={() => navigate(props.element.url)}
         >
-            {props.element.name}
+            {name}
 
         </button>
     )

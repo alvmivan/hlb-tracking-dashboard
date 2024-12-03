@@ -2,14 +2,19 @@ import {Route, Routes} from "react-router-dom";
 import {LoginComponent} from "./Auth/Login.tsx";
 import {runInitialization} from "./Initialization/initializationSteps.ts";
 import {HomeScreen} from "./Home/HomeScreen.tsx";
-import {NavigationBar} from "./Navigation/NavigationBar.tsx";
-import {useEffect, useState} from "react";
+import {NavigationBar, NavigationElementData} from "./Navigation/NavigationBar.tsx";
+import React, {useEffect, useState} from "react";
+import {DeliveryNotesScreen} from "./DeliveryNotes/DeliveryNotesScreen.tsx";
 
+type RouteData = NavigationElementData & {
+    element: React.ReactElement | React.ReactNode;
+}
 
-const navigationElements = [
-    {name: "Home", url: "/"},
-    {name: "About", url: "/about"},
-    {name: "Contact", url: "/contact"},
+const navigationElements: (RouteData)[] = [
+    {name: "Home", url: "/", element: <HomeScreen/>},
+    {name: "About", url: "/about", element: <div>About</div>},
+    {name: "Contact", url: "/contact", element: <div>Contact</div>},
+    {name: "delivery_notes", url: "/delivery-notes", nameIsLocalizationKey: true, element: <DeliveryNotesScreen/>},
 ]
 
 const AppContent = () => <>
@@ -17,9 +22,9 @@ const AppContent = () => <>
         elements={navigationElements}
     />
     <Routes>
-        <Route path="/" element={<HomeScreen/>}/>
-        <Route path="/about" element={<div>About</div>}/>
-        <Route path="/contact" element={<div>Contact</div>}/>
+        {navigationElements.map((element, index) =>
+            <Route key={index} path={element.url} element={element.element}/>
+        )}
     </Routes>
 </>;
 
@@ -56,7 +61,7 @@ const App = () => {
     if (!preAuthInitializationCompleted) return loadingElement
     if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>
     if (!postAuthInitializationCompleted) return loadingElement
-    return <AppContent></AppContent>
+    return <AppContent/>
 };
 
 export default App
