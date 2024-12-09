@@ -22,3 +22,9 @@
     color: #fafafade;
     background-color: #202324;
 }
+
+
+/*remove scroll ability from root*/
+html {
+    overflow: hidden;
+}

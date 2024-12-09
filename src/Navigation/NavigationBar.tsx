@@ -29,17 +29,16 @@ export const NavigationElement = (props: { element: NavigationElementData }) => 
 export const NavigationBar = (props: { elements: NavigationElementData[] }) => {
 
     const elements = props.elements.map((element, index) =>
-        <>
-            <NavigationElement key={index} element={element}/>
-        </>
+
+        <NavigationElement key={index} element={element}/>
     );
     return (
         <div className={"nav-bar style-card-05 style-content-flex "}>
-            <div className={"nav-bar-title"}>
+            <div key={0} className={"nav-bar-title"}>
                 <img src={"/hlb_mini.png"} className={"nav-bar-image"}/>
                 <LocalizedLabel labelKey={"navigation_title"}/>
             </div>
-            <div className={"nav-buttons-container"}>
+            <div key={1} className={"nav-buttons-container"}>
                 {elements}
             </div>
         </div>

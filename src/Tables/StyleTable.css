@@ -1,0 +1,31 @@
+﻿/*main container of the table*/
+.style-table-container {
+    width: 100%;
+    border: 1px solid #fff7;
+    margin-bottom: 1220px;
+}
+
+
+.style-table-header-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1rem;
+}
+
+.style-table-cell {
+    padding: 10px;
+    background-color: #ffffff10;
+    border: 1px solid #ffffff20;
+}
+
+.style-table-header-cell {
+    background-color: #ffffff05;
+    border: 1px solid #ffffff10;
+}
+
+
+.style-table-body-container {
+    width: 100%;
+    overflow: scroll;
+    max-height: 65vh;
+}

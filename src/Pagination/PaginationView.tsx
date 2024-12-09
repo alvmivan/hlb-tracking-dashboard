@@ -50,18 +50,18 @@ export const PaginationView = (props: PaginatedViewConfig) => {
     const amountButtonsAfter = props.buttonsAfter || 1;
 
     const buttons = [];
-    buttons.push(<PaginationButton text={"«"} page={buttonBegin} setPage={setCurrentPage}/>)
+    buttons.push(<PaginationButton key={10000000} text={"«"} page={buttonBegin} setPage={setCurrentPage}/>)
     for (let i = currentPage - amountButtonsBefore; i < currentPage; i++) {
-        buttons.push(<PaginationButton text={i.toString()} page={i} setPage={setCurrentPage}/>)
+        buttons.push(<PaginationButton key={i*2+1} text={i.toString()} page={i} setPage={setCurrentPage}/>)
     }
 
-    buttons.push(<CurrentPageLabel currentPage={currentPage}/>)
+    buttons.push(<CurrentPageLabel key={100000001} currentPage={currentPage}/>)
 
     for (let i = currentPage + 1; i <= currentPage + amountButtonsAfter; i++) {
-        buttons.push(<PaginationButton text={i.toString()} page={i} setPage={setCurrentPage}/>)
+        buttons.push(<PaginationButton key={i*2} text={i.toString()} page={i} setPage={setCurrentPage}/>)
     }
 
-    buttons.push(<PaginationButton text={"»"} page={buttonPlus10} setPage={setCurrentPage}/>)
+    buttons.push(<PaginationButton key={100000002} text={"»"} page={buttonPlus10} setPage={setCurrentPage}/>)
 
     return (
         <div className={"pagination-buttons-container"}>
