@@ -1,6 +1,7 @@
 ﻿import {initializeLocalization} from "hlb-api-library/src/localization/domain/localizationService.ts";
 import {initStorageStep} from "./setupStorage.ts";
 import {initUsersCacheStep} from "../Users/UsersData.ts";
+import {initCompaniesCacheStep} from "../Companies/Companies.ts";
 
 export type InitializationStep = {
     name: string,
@@ -37,7 +38,8 @@ const authenticatedSteps: InitializationStep[] = [
         action: async () => {
             // Download operation types
         }
-    }
+    },
+    initCompaniesCacheStep,
 ]
 
 export const runInitialization = async (isAuthenticated: boolean): Promise<boolean> => {

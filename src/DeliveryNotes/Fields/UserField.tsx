@@ -2,41 +2,31 @@
 import {useEffect, useState} from "react";
 import {UserData} from "hlb-api-library/src/auth/domain/userData.ts";
 import {Maybe, nothing} from "hlb-api-library/src/maybeMonad/Maybe";
-import {useNavigate} from "react-router-dom";
+import {NavigableField} from "./NavigableField.tsx";
 
 
 export const UserField = (props: { userId: string }) => {
 
     const {userId} = props;
     const [user, setUser] = useState<Maybe<UserData>>(nothing());
-    const navigate = useNavigate();
+    const [alreadyAsked, setAlreadyAsked] = useState(false);
+
+
     useEffect(() => {
-        (
-            async () => {
-                try {
-                    setUser(await fetchUserData(userId));
-                } catch (e) {
-                    console.error(e);
-                }
-            }
-        )()
-    })
-    const loading = <span className={"user-field"}>Cargando...</span>;
+        if (alreadyAsked) return;
+        setAlreadyAsked(true);
+        user.doOnAbsent(() =>
+            fetchUserData(userId).then(setUser).catch(console.error));
+    }, [userId, setUser, user, alreadyAsked, setAlreadyAsked]);
 
-    const nav = () => {
+    const field = user.map((userData: UserData) => (<>
+        {userData.name} {userData.lastName}
+    </>));
 
-        navigate(`/user/${userId}`);
-    }
+    return <NavigableField
+        path={`/user/${userId}`}
+        content={field}
+    />
 
-    return user
-        .map((userData: UserData) =>
-            <div className={"fields-user-entry-container"}>
-                <span className={"fields-user-name"}>{userData.name} {userData.lastName}</span>
-                <button className={"fields-see-user"} onClick={nav}>
-                    <img src="public/rightarrow.png" alt="Navigate"/>
-                </button>
-            </div>
-        )
-        .orElse(loading)
-
+ 
 }

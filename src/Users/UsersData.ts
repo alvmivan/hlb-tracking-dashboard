@@ -18,10 +18,9 @@ async function cacheUserData(userData: UserData): Promise<void> {
 
 export const fetchUserData = async (userId: string): Promise<Maybe<UserData>> => {
     let user: Maybe<UserData> = cache.get(userId);
-    if (user.isNothing()) {
-        user = await getUserData(userId);
-    }
-    return user
-        .doAsync(data => cacheUserData(data))
-        .do(data => console.log("User data to cache: ", data));
+    if (!user.isNothing()) return user;
+
+    return (await getUserData(userId))
+        .doAsync(data => cacheUserData(data));
+
 }

@@ -6,6 +6,7 @@ import {NavigationBar, NavigationElementData} from "./Navigation/NavigationBar.t
 import React, {useEffect, useState} from "react";
 import {DeliveryNotesScreen} from "./DeliveryNotes/DeliveryNotesScreen.tsx";
 import {UserProfile} from "./Users/UserProfile.tsx";
+import {CompanyInspector} from "./Companies/CompanyInspector.tsx";
 
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
@@ -19,10 +20,10 @@ const navigationElements: (RouteData)[] = [
 ]
 
 const elementsWithoutButton: (RouteData)[] = [
-    {name: "See User", url: "/user/:userId", element:<UserProfile/>}
+    {name: "Inspect User", url: "/user/:userId", element: <UserProfile/>},
+    {name: "Inspect Company", url: "/company/:companyId", element: <CompanyInspector/>}
 ]
 
- 
 
 const AppContent = () => <>
     <NavigationBar

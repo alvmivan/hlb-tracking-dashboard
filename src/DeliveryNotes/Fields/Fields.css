@@ -7,7 +7,7 @@
 }
 
 
-.fields-user-entry-container {
+.navigable-field-entry-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,11 +15,9 @@
 }
 
 
-.fields-user-name {
+ 
 
-}
-
-.fields-see-user {
+.navigable-field-see  {
     height: 20px;
     width: auto;
     background-color: transparent;
@@ -28,7 +26,7 @@
 
 }
 
-.fields-see-user img {
+.navigable-field-see  img {
     width: 100%;
     height: 100%;
     /*    invert color*/
