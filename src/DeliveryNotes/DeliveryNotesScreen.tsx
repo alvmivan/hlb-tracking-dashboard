@@ -5,10 +5,16 @@ import {
     DeliveryNotesFilterData,
     getDeliveryNotes
 } from "hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
-import {DateField} from "../Dates/DateField.tsx";
+import {DateField} from "./Fields/DateField.tsx";
 import {TableComponent} from "../Tables/TableComponent.tsx";
+import { UserField } from "./Fields/UserField.tsx";
 
 const initialPage = 1;
+
+
+
+
+
 
 
 const NotesTable = (props: { notes: DeliveryNoteFullData[] }) => {
@@ -17,23 +23,23 @@ const NotesTable = (props: { notes: DeliveryNoteFullData[] }) => {
 
     const headers = [
         "Company",
-        "Date",
         "Driver",
         "Operations",
-        "Observations"
+        "Observations",
+        "Fecha",
     ];
 
     const rows = notes.map(note => {
         return [
             note.companyId,
-            <DateField date={note.date}/>,
-            note.userId,
+            <UserField userId={note.userId}/>,
             note.operations.length,
-            note.observations
+            note.observations,
+            <DateField date={note.date}/>,
         ]
     });
 
-    const sizes = [3,3,3,5,6];
+    const sizes = [3,3,3,5,2];
 
     return <TableComponent headers={headers} rows={rows} sizes={sizes}/>
 

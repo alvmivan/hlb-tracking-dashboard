@@ -1,4 +1,3 @@
-/*Font Setup*/
 :root {
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
@@ -7,13 +6,10 @@
     font-variation-settings: "wdth" 100, "YTLC" 500;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
-
-
+    
     margin: 0;
     border: 0;
     width: 100%;
-
-
 }
  
 :root {
@@ -23,8 +19,6 @@
     background-color: #202324;
 }
 
-
-/*remove scroll ability from root*/
 html {
     overflow: hidden;
 }

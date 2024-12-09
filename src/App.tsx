@@ -1,10 +1,11 @@
 import {Route, Routes} from "react-router-dom";
-import {LoginComponent} from "./Auth/Login.tsx";
+import {LoginComponent} from "./Users/Login.tsx";
 import {runInitialization} from "./Initialization/initializationSteps.ts";
 import {HomeScreen} from "./Home/HomeScreen.tsx";
 import {NavigationBar, NavigationElementData} from "./Navigation/NavigationBar.tsx";
 import React, {useEffect, useState} from "react";
 import {DeliveryNotesScreen} from "./DeliveryNotes/DeliveryNotesScreen.tsx";
+import {UserProfile} from "./Users/UserProfile.tsx";
 
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
@@ -17,12 +18,21 @@ const navigationElements: (RouteData)[] = [
     {name: "delivery_notes", url: "/delivery-notes", nameIsLocalizationKey: true, element: <DeliveryNotesScreen/>},
 ]
 
+const elementsWithoutButton: (RouteData)[] = [
+    {name: "See User", url: "/user/:userId", element:<UserProfile/>}
+]
+
+ 
+
 const AppContent = () => <>
     <NavigationBar
         elements={navigationElements}
     />
     <Routes>
         {navigationElements.map((element, index) =>
+            <Route key={index} path={element.url} element={element.element}/>
+        )}
+        {elementsWithoutButton.map((element, index) =>
             <Route key={index} path={element.url} element={element.element}/>
         )}
     </Routes>
@@ -61,6 +71,7 @@ const App = () => {
     if (!preAuthInitializationCompleted) return loadingElement
     if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>
     if (!postAuthInitializationCompleted) return loadingElement
+
     return <AppContent/>
 };
 

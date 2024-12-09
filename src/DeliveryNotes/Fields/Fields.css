@@ -1,0 +1,36 @@
+﻿.fields-date-field {
+    width: 100%;
+    border: 1px solid #202324;
+    font-family: monospace;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.fields-user-entry-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.fields-user-name {
+
+}
+
+.fields-see-user {
+    height: 20px;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+
+.fields-see-user img {
+    width: 100%;
+    height: 100%;
+    /*    invert color*/
+    filter: invert(1);
+}

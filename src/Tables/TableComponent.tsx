@@ -1,9 +1,9 @@
-﻿import {ReactElement, ReactNode, useEffect, useState} from "react";
+﻿import {ReactElement, ReactNode} from "react";
 import "./StyleTable.css"
 
 type ElementToRender = ReactNode | ReactElement | string;
 export type TableData = {
-    headers: string[];
+    headers: ElementToRender[];
     rows: ElementToRender[][];
     sizes?: number[];
 }
