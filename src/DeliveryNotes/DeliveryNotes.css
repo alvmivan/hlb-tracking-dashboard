@@ -15,8 +15,7 @@
 
 
     display: grid;
-    grid-template-rows: repeat(auto-fill, 1fr);
-    grid-gap: 10px;
+    grid-template-rows: repeat(auto-fill, 1fr);     
     padding: 10px;
 
 }
@@ -26,4 +25,5 @@
     background-color: #ffffff10;
     cursor: pointer;
     border: 1px solid #ffffff40;
+    margin: 5px;
 }

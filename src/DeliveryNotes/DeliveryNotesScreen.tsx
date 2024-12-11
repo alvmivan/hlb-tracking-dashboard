@@ -97,13 +97,31 @@ const NotesTable = (props: { notes: DeliveryNoteFullData[] }) => {
             return [
                 companyField,
                 userField,
-                <div className={"operation-list-element"}>                    
+                <div className={"operation-list-element"}>
                     <OperationField operation={note.operations[0]}/>,
                 </div>,
                 observationsField,
                 dateField
             ]
         }
+        // if (note.operations.length === 2) {
+        //     return [
+        //         companyField,
+        //         userField,
+        //         <div>
+        //             <div className={"operation-list-element"} key={0}>
+        //                 <OperationField operation={note.operations[0]}/>,
+        //             </div>
+        //
+        //             <div className={"operation-list-element"} key={1}>
+        //                 <OperationField operation={note.operations[1]}/>,
+        //             </div>
+        //         </div>
+        //         ,
+        //         observationsField,
+        //         dateField
+        //     ]
+        // }
 
 
         if (!extendedNoteIndex.includes(index))

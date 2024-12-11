@@ -11,9 +11,9 @@ export const NavigableField = (props: { content: Maybe<ElementToRender>, path: s
     const nav = () => navigate(props.path)
 
     return props.content.map((content: ElementToRender) => (
-        <div className={"navigable-field-entry-container"}>
+        <div className={"navigable-field-entry-container style-cursor-clickable"} onClick={nav}>
             <span>{content}</span>
-            <button className={"navigable-field-see "} onClick={nav}>
+            <button className={"navigable-field-see "} >
                 <img src="public/rightarrow.png" alt="Navigate"/>
             </button>
         </div>
