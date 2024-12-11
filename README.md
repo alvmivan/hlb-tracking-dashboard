@@ -1,50 +1,100 @@
-# React + TypeScript + Vite
+# HLB Tracking Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based web dashboard for tracking delivery notes and managing company operations.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+HLB Tracking Dashboard is a TypeScript React application built with Vite that provides a user interface for:
 
-## Expanding the ESLint configuration
+- Managing delivery notes
+- Viewing company information
+- User management and authentication
+- Multi-language support
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Key Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Authentication System**: Secure login functionality with user session management
+- **Delivery Notes Management**: View and track delivery notes with filtering capabilities
+- **Company Inspector**: Detailed view of company information and related data
+- **User Management**: User profile viewing and management
+- **Localization**: Built-in support for multiple languages
+- **Caching System**: Local caching implementation for improved performance
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Tech Stack
+
+- React 18.3
+- TypeScript
+- Vite 6.0
+- React Router DOM 7.0
+- HLB API Library (Custom package)
+
+## Project Structure
+
+```
+hlb-tracking-dashboard/
+├── src/
+│   ├── Companies/       # Company-related components and logic
+│   ├── DeliveryNotes/   # Delivery notes management
+│   ├── Home/            # Home screen components
+│   ├── Initialization/  # App initialization logic
+│   ├── LocalCache/      # Local caching implementation
+│   ├── Localization/    # Multi-language support
+│   ├── Users/           # User management components
+│   └── App.tsx         # Main application component
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+1. Install dependencies:
+```bash
+npm install
 ```
+
+2. Run development server:
+```bash
+npm run dev
+```
+
+3. Build for production:
+```bash
+npm run build
+```
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
+
+### ESLint Configuration
+
+The project uses a custom ESLint configuration with TypeScript support. See `eslint.config.js` for details.
+
+## Dependencies
+
+### Main Dependencies
+- react
+- react-dom
+- react-router-dom
+- hlb-api-library
+
+### Dev Dependencies
+- TypeScript
+- Vite
+- ESLint
+- Various TypeScript and React related plugins
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is private and proprietary. All rights reserved.

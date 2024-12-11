@@ -18,11 +18,11 @@ const NotesTable = (props: { notes: DeliveryNoteFullData[] }) => {
     const {notes} = props;
 
     const headers = [
-        "Company",
-        "Driver",
-        "Operations",
-        "Observations",
-        "Fecha",
+        "company",
+        "driver",
+        "operations",
+        "observations",
+        "date",
     ];
 
     const rows = notes.map(note => {

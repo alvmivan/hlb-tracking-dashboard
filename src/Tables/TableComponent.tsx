@@ -1,5 +1,6 @@
 ﻿import {ReactElement, ReactNode} from "react";
 import "./StyleTable.css"
+import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 export type ElementToRender = ReactNode | ReactElement | string;
 export type TableData = {
@@ -44,7 +45,11 @@ export const TableComponent = (props: TableData) => {
 
     const headersDisplay = headers.map((header, index) => {
         return <span key={index} className={"style-table-header-cell style-table-cell"}
-                     style={{width: (headersWidth[index]) + 'px'}}>{header}</span>
+                     style={{width: (headersWidth[index]) + 'px'}}>{
+            <LocalizedLabel
+                labelKey={header as string}
+            />
+        }</span>
     });
 
     // ahora vamos a analizar las rows
