@@ -23,7 +23,6 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-
 }
 
 .navigable-field-see  img {
@@ -31,4 +30,9 @@
     height: 100%;
     /*    invert color*/
     filter: invert(1);
+}
+
+
+.navigable-field-see-rotate-90{
+    transform: rotate(90deg);
 }

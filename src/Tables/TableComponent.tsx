@@ -44,8 +44,11 @@ export const TableComponent = (props: TableData) => {
     const headers = props.headers;
 
     const headersDisplay = headers.map((header, index) => {
-        return <span key={index} className={"style-table-header-cell style-table-cell"}
-                     style={{width: (headersWidth[index]) + 'px'}}>{
+        const headerSize = {
+            width: (headersWidth[index]) + 'px',
+            transition: 'width 0.1s'
+        };
+        return <span key={index} className={"style-table-header-cell style-table-cell"} style={headerSize}>{
             <LocalizedLabel
                 labelKey={header as string}
             />
@@ -54,10 +57,19 @@ export const TableComponent = (props: TableData) => {
 
     // ahora vamos a analizar las rows
     const rows = props.rows;
-    const rowsDisplay = rows.map(row => {
+    const rowsDisplay = rows.map((row, rowIndex) => {
+
+        const isOdd = rowIndex % 2 === 0;
+        const rowClass = isOdd ? "style-table-row-odd" : "style-table-row-even";
+
         return row.map((element, index) => {
-            return <span className={"style-table-cell"} key={index}
-                         style={{width: (headersWidth[index]) + 'px'}}>{element}</span>
+
+            const style = {
+                width: (headersWidth[index]) + 'px',
+                transition: 'width 0.1s'
+            };
+            return <span className={rowClass} key={index}
+                         style={style}>{element}</span>
         });
     });
 

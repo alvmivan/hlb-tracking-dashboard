@@ -60,7 +60,7 @@
     position: fixed;
     bottom: min(10px, 1%);
     width: 100%;
-    
+
 }
 
 .style-location-top {
@@ -81,4 +81,22 @@
 
     justify-items: center;
     justify-content: flex-start;
+}
+
+
+.style-content-horizontal-full {
+    display: flex;
+    justify-content: space-between;
+}
+
+.style-content-horizontal-full {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+}
+ 
+
+.style-cursor-clickable {
+    cursor: pointer;
 }

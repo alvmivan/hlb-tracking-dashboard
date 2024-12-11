@@ -12,11 +12,27 @@
     margin-right: 1rem;
 }
 
+
+
 .style-table-cell {
     padding: 10px;
     background-color: #ffffff10;
     border: 1px solid #ffffff20;
 }
+
+.style-table-row-odd{
+    padding: 10px;
+    background-color: #ffffff15;
+    border: 1px solid #ffffff20;
+}
+
+.style-table-row-even{
+    padding: 10px;
+    background-color: #ffffff05;
+    border: 1px solid #ffffff20;
+}
+
+
 
 .style-table-header-cell {
     background-color: #ffffff05;
@@ -28,4 +44,14 @@
     width: 100%;
     overflow: scroll;
     max-height: 65vh;
+}
+
+.style-background-red{
+    background-color: #ff0000 !important;
+}
+
+.style-centered-aligned{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
