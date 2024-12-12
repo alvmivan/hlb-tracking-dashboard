@@ -1,0 +1,44 @@
+﻿.dumpster-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 10px;
+    background-color: #ffffff10;
+    cursor: pointer;
+    border: 1px solid #ffffff20;
+    border-radius: 2px;
+    height: 30px;
+}
+
+.selected-dumpster {
+    background-color: #8888ff80;
+    transition: background-color 0.5s;
+}
+
+.dumpster-selection-column-container {
+    width: 12%;
+}
+
+.dumpster-state-label {
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: monospace;    
+    margin: 10px;
+}
+
+.dumpster-state-label-good {
+    border: 1px solid #00ff0090;
+    background-color: #00ff0010;
+}
+
+.dumpster-state-label-burned {
+    border: 1px solid #ff000090;
+    background-color: #ff000010;
+}
+
+.dumpster-state-label-need-repair {
+    border: 1px solid #ffaa0090;
+    background-color: #ffaa0010;
+}

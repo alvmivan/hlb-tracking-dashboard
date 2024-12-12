@@ -7,33 +7,27 @@ import React, {useEffect, useState} from "react";
 import {DeliveryNotesScreen} from "./DeliveryNotes/DeliveryNotesScreen.tsx";
 import {UserProfile} from "./Users/UserProfile.tsx";
 import {CompanyInspector} from "./Companies/CompanyInspector.tsx";
+import {DumpstersScreen} from "./Dumpsters/DumpstersScreen.tsx";
 
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
 }
 
 const navigationElements: (RouteData)[] = [
-    {name: "Home", url: "/", element: <HomeScreen/>},
-    {name: "About", url: "/about", element: <div>About</div>},
-    {name: "Contact", url: "/contact", element: <div>Contact</div>},
-    {name: "delivery_notes", url: "/delivery-notes", nameIsLocalizationKey: true, element: <DeliveryNotesScreen/>},
-]
-
-const elementsWithoutButton: (RouteData)[] = [
-    {name: "Inspect User", url: "/user/:userId", element: <UserProfile/>},
-    {name: "Inspect Company", url: "/company/:companyId", element: <CompanyInspector/>}
+    {url: "/", element: <HomeScreen/>, buttonNameKey: "home"},
+    {url: "/delivery-notes", element: <DeliveryNotesScreen/>, buttonNameKey: "delivery_notes"},
+    {url: "/dumpsters", element: <DumpstersScreen/>, buttonNameKey: "dumpsters"},
+    {url: "/user/:userId", element: <UserProfile/>},
+    {url: "/company/:companyId", element: <CompanyInspector/>}
 ]
 
 
 const AppContent = () => <>
     <NavigationBar
-        elements={navigationElements}
+        elements={navigationElements.filter(element => element.buttonNameKey !== undefined)}
     />
     <Routes>
         {navigationElements.map((element, index) =>
-            <Route key={index} path={element.url} element={element.element}/>
-        )}
-        {elementsWithoutButton.map((element, index) =>
             <Route key={index} path={element.url} element={element.element}/>
         )}
     </Routes>

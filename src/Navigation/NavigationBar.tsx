@@ -3,17 +3,16 @@ import {useNavigate} from "react-router-dom";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 export type NavigationElementData = {
-    name: string;
+    buttonNameKey?: string;
     url: string;
-    nameIsLocalizationKey?: boolean;
 }
 
 
 export const NavigationElement = (props: { element: NavigationElementData }) => {
     const navigate = useNavigate();
 
-    const name = props.element.nameIsLocalizationKey ?
-        <LocalizedLabel labelKey={props.element.name}/> : props.element.name;
+    const name =
+        <LocalizedLabel labelKey={props.element.buttonNameKey!}/>
 
     return (
         <button
