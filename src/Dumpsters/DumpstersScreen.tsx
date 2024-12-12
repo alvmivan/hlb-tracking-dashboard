@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import "./Dumpsters.css";
+import { DumpstersMap } from "./DumpstersMap.tsx";
 
 async function fetchDumpsters(): Promise<DumpsterData[]> {
     const data: { dumpsters: DumpsterData[] } = await getAllDumpsters();
@@ -42,7 +43,7 @@ const DumpsterSelectionColumn = (props: {
         return props.selected && props.selected.dumpsterCode === dumpster.dumpsterCode;
     }
 
-    return <div className={"dumpster-selection-column-container style-scrollable-column80"}>
+    return <div className={"dumpster-selection-column-container style-scrollable-column75"}>
         {props.dumpsters.map((dumpster, index) => {
             const className = isSelected(dumpster) ? "selected-dumpster" : "";
 
@@ -70,9 +71,19 @@ export const DumpstersScreen = () => {
 
     return <div>
         <h1><LocalizedLabel labelKey={"dumpsters"}/></h1>
-        <DumpsterSelectionColumn dumpsters={dumpsters} selectDumpster={setSelectedDumpster} selected={selectedDumpster}/>
-        {/*<DumpstersMap dumpsters={dumpsters}/>*/}
-        {/*<DumpsterInfo dumpster={selectedDumpster}/>*/}
+        <div className="dumpsters-screen-container">
+            <DumpsterSelectionColumn 
+                dumpsters={dumpsters} 
+                selectDumpster={setSelectedDumpster} 
+                selected={selectedDumpster}
+            />
+            <DumpstersMap 
+                dumpsters={dumpsters} 
+                selectDumpster={setSelectedDumpster} 
+                selected={selectedDumpster}
+            />
+            {/*<DumpsterInfo dumpster={selectedDumpster}/>*/}
+        </div>
     </div>
 
 

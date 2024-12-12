@@ -42,16 +42,26 @@
 
 .style-table-body-container {
     width: 100%;
-    overflow: scroll;
     max-height: 65vh;
+    /*overflow: scroll;*/
+/*    only scroll up and down*/
+    overflow-y: auto;
+    /*only scroll left and right*/
+    /*overflow-x: auto;*/
+    
 }
 
-.style-background-red{
-    background-color: #ff0000 !important;
-}
+
 
 .style-centered-aligned{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+
+
+
+.test-style-red-bg{
+    background-color: #ff0000 !important;
 }

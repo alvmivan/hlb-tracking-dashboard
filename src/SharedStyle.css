@@ -111,7 +111,7 @@
     max-height: 50vh;
 }
 
-.style-scrollable-column80 {
+.style-scrollable-column75 {
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 75vh;
 }

@@ -4,13 +4,13 @@ import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 export type ElementToRender = ReactNode | ReactElement | string;
 export type TableData = {
-    headers: ElementToRender[];
+    headers: string[];
     rows: ElementToRender[][];
     sizes?: number[];
 }
 
 function getCurrentWidth() {
-    return window.innerWidth - 150;
+    return window.innerWidth - 140;
 }
 
 function getPixelsDistribution(headers: string[]) {
@@ -45,7 +45,7 @@ export const TableComponent = (props: TableData) => {
 
     const headersDisplay = headers.map((header, index) => {
         const headerSize = {
-            width: (headersWidth[index]) + 'px',
+            width: headersWidth[index] + 'px',
             transition: 'width 0.1s'
         };
         return <span key={index} className={"style-table-header-cell style-table-cell"} style={headerSize}>{
@@ -64,8 +64,11 @@ export const TableComponent = (props: TableData) => {
 
         return row.map((element, index) => {
 
+            //if is last add  15 to width
+            
+            
             const style = {
-                width: (headersWidth[index]) + 'px',
+                width: headersWidth[index] + 'px',
                 transition: 'width 0.1s'
             };
             return <span className={rowClass} key={index}

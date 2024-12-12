@@ -24,7 +24,7 @@
     padding: 5px;
     border-radius: 3px;
     font-size: 12px;
-    font-family: monospace;    
+    font-family: monospace;
     margin: 10px;
 }
 
@@ -41,4 +41,36 @@
 .dumpster-state-label-need-repair {
     border: 1px solid #ffaa0090;
     background-color: #ffaa0010;
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.dumpsters-screen-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2%;
+    height: 70vh;
+
+}
+
+
+.dumpsters-map-container {
+    height: 100%;
+    width: 60%;    
+}
+
+.dumpsters-map {
+    
+    border-radius: 0;
+    border: 1px solid #00000080;
+    
+    
+    
+    
 }
