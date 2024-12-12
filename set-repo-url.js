@@ -1,6 +1,8 @@
 ﻿const fs = require('fs');
 const NPM_TOKEN = process.env.NPM_TOKEN;
 
+console.log("Corriendo pre install");
+
 if (NPM_TOKEN) {
     
     const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
@@ -10,3 +12,5 @@ if (NPM_TOKEN) {
     fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
     console.log('Updated hlb-api-library URL based on environment');
 }  
+
+console.log("Fin pre install");
