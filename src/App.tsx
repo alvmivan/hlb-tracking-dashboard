@@ -8,6 +8,7 @@ import {DeliveryNotesScreen} from "./DeliveryNotes/DeliveryNotesScreen.tsx";
 import {UserProfile} from "./Users/UserProfile.tsx";
 import {CompanyInspector} from "./Companies/CompanyInspector.tsx";
 import {DumpstersScreen} from "./Dumpsters/DumpstersScreen.tsx";
+import {LoadingComponent} from "./Loading/LoadingComponent.tsx";
 
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
@@ -61,7 +62,7 @@ const App = () => {
         initialization().then();
     }, [preAuthInitializationCompleted, postAuthInitializationCompleted, isLogged]);
 
-    const loadingElement = <div>Cargando...</div>;
+    const loadingElement = <LoadingComponent/>;
 
     if (!preAuthInitializationCompleted) return loadingElement
     if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>

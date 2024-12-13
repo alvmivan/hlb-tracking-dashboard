@@ -14,6 +14,7 @@ const initLocalizationStep: InitializationStep = {
     description: "Download localization files from the server",
     action: async () => {
         await initializeLocalization();
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 };
 
@@ -37,6 +38,8 @@ const authenticatedSteps: InitializationStep[] = [
         description: "Download operation types from the server",
         action: async () => {
             // Download operation types
+            // wait 10 seconds
+            return new Promise(resolve => setTimeout(resolve, 5000));
         }
     },
     initCompaniesCacheStep,

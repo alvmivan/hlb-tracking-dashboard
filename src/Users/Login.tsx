@@ -4,6 +4,7 @@ import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 import './Login.css';
 import {localizeKey} from "../Localization/LocalizeKey.ts";
+import {LoadingComponent} from "../Loading/LoadingComponent.tsx";
 
 interface LoginComponentParams {
     setIsLogged: (isLogged: boolean) => void
@@ -69,7 +70,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
     }
 
     if (isGettingCache) {
-        return <LocalizedLabel labelKey={"loading"}/>;
+        return <LoadingComponent/>        
     }
 
     return (
