@@ -71,11 +71,11 @@ export const LoadingComponent = (props: Partial<LoadingComponentProps>) => {
             backgroundColor,
             width: `${pieceLength}px`,
             height: `${pieceWidth}px`,
-            "border-radius": '4px',
-            position: 'absolute',
+            borderRadius: '4px',
+            position: 'absolute' as const,
             left: xPos + 'px',
             top: yPos + 'px',
-            "blend-mode": blendMode
+            mixBlendMode: blendMode as const
         }
         return <span key={index} style={rotStyle}> </span>
     }
