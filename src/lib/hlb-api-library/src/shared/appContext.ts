@@ -1,11 +1,23 @@
-﻿import AsyncStorage from '@react-native-async-storage/async-storage';
+﻿interface Storage {
+    setItem(key: string, value: string): Promise<void>;
+    getItem(key: string): Promise<string | null>;
+    removeItem(key: string): Promise<void>;
+}
 
-type Storage = {
-    setItem: (key: string, value: string) => Promise<void>,
-    getItem: (key: string) => Promise<string | null>,
-    removeItem: (key: string) => Promise<void>,
+// Wrapper para el localStorage del navegador que simula la API async
+const browserStorage: Storage = {
+    async setItem(key: string, value: string) {
+        window.localStorage.setItem(key, value);
+    },
+    async getItem(key: string) {
+        return window.localStorage.getItem(key);
+    },
+    async removeItem(key: string) {
+        window.localStorage.removeItem(key);
+    }
 };
-let localStorage: Storage = AsyncStorage;
+
+let localStorage: Storage = browserStorage;
 
 let cache: Map<string, string> = new Map();
 let nodeLocalStorage: Storage = {

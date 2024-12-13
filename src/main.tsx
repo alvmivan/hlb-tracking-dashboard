@@ -3,10 +3,11 @@ import {createRoot} from 'react-dom/client'
 import './rootStyle.css'
 import App from './App.tsx'
 import {configSettings} from "hlb-api-library/src/shared/appContext.ts";
-
+import { initializeStorage } from './config/storage';
 
 import {BrowserRouter} from 'react-router-dom'
 
+initializeStorage();
 
 configSettings(
     {
