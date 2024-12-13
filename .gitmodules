@@ -1,0 +1,3 @@
+[submodule "src/lib/hlb-api-library"]
+	path = src/lib/hlb-api-library
+	url = https://github.com/alvmivan/hlb-api-library.git
