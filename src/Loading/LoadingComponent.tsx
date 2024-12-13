@@ -1,5 +1,5 @@
 ﻿import {useEffect, useState} from "react";
-
+import type { CSSProperties } from 'react';
 
 type LoadingComponentProps = {
     pieceLength: number;
@@ -18,6 +18,8 @@ const defaultConfig: LoadingComponentProps = {
     offset: {x: 0, y: 0},
     blendMode: 'normal'
 }
+
+type MixBlendMode = CSSProperties['mixBlendMode'];
 
 export const LoadingComponent = (props: Partial<LoadingComponentProps>) => {
 
@@ -75,7 +77,7 @@ export const LoadingComponent = (props: Partial<LoadingComponentProps>) => {
             position: 'absolute' as const,
             left: xPos + 'px',
             top: yPos + 'px',
-            mixBlendMode: blendMode as const
+            mixBlendMode: blendMode as MixBlendMode | undefined
         }
         return <span key={index} style={rotStyle}> </span>
     }

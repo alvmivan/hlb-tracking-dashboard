@@ -158,15 +158,12 @@ export const DeliveryNotesScreen = () => {
     const setPage = (page: number) => setCurrentPage(page < 1 ? 1 : page)
 
 
-    const [filters, setFilters] = useState({
+    const [filters] = useState({
         byCompanyId: [],
         dateRange: undefined,
         byApproval: undefined,
         byOperatorId: []
     })
-
-    const [compactView, setCompactView] = useState(false);
-
 
     const [notes, setNotes] = React.useState(new Array<DeliveryNoteFullData>());
 
