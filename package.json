@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "install": "node set-repo-url.js && npm install",
-    
+    "preinstall": "node set-repo-url.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
