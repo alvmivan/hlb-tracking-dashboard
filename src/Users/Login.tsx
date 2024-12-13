@@ -1,5 +1,5 @@
 ﻿import React, {useEffect} from 'react';
-import {loginUser, validateSession} from "hlb-api-library/src/auth/domain/userServices.ts";
+import {loginUser, validateSession} from "../lib/hlb-api-library/src/auth/domain/userServices";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
 import './Login.css';

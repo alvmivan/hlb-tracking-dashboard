@@ -1,5 +1,5 @@
 ﻿import {ElementToRender} from "../../Tables/TableComponent.tsx";
-import {Maybe} from "hlb-api-library/src/maybeMonad/Maybe";
+import {Maybe} from "../../lib/hlb-api-library/src/maybeMonad/Maybe";
 import {useNavigate} from "react-router-dom";
 
 

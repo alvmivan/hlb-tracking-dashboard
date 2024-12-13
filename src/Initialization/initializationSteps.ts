@@ -1,4 +1,4 @@
-﻿import {initializeLocalization} from "hlb-api-library/src/localization/domain/localizationService.ts";
+﻿import {initializeLocalization} from "../lib/hlb-api-library/src/localization/domain/localizationService";
 import {initStorageStep} from "./setupStorage.ts";
 import {initUsersCacheStep} from "../Users/UsersData.ts";
 import {initCompaniesCacheStep} from "../Companies/Companies.ts";

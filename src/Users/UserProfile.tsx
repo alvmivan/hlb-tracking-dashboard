@@ -1,8 +1,8 @@
 ﻿import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {UserData} from "hlb-api-library/src/auth/domain/userData.ts";
-import {Maybe, nothing} from "hlb-api-library/src/maybeMonad/Maybe";
-import {getUserData} from "hlb-api-library/src/auth/domain/userServices.ts";
+import {UserData} from "../lib/hlb-api-library/src/auth/domain/userData";
+import {Maybe, nothing} from "../lib/hlb-api-library/src/maybeMonad/Maybe";
+import {getUserData} from "../lib/hlb-api-library/src/auth/domain/userServices";
 
 function UserInfo(props: { data: UserData }) {
 

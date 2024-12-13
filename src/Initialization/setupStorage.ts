@@ -1,4 +1,4 @@
-﻿import {setCustomStorage} from "hlb-api-library/src/shared/appContext.ts";
+﻿import {setCustomStorage} from "../lib/hlb-api-library/src/shared/appContext";
 
 interface Storage {
     setItem: (key: string, value: string) => Promise<void>,

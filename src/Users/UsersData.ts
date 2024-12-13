@@ -1,6 +1,6 @@
-﻿import {UserData} from "hlb-api-library/src/auth/domain/userData.ts";
-import {getUserData} from "hlb-api-library/src/auth/domain/userServices.ts";
-import {Maybe} from "hlb-api-library/src/maybeMonad/Maybe";
+﻿import {UserData} from "../lib/hlb-api-library/src/auth/domain/userData";
+import {getUserData} from "../lib/hlb-api-library/src/auth/domain/userServices";
+import {Maybe} from "../lib/hlb-api-library/src/maybeMonad/Maybe";
 import {LocalCache} from "../LocalCache/LocalCache.ts";
 
 let cache: LocalCache<string, UserData>;

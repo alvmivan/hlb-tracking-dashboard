@@ -1,4 +1,4 @@
-﻿import {DumpsterData, getAllDumpsters} from "hlb-api-library/src/dumpsters/domain/dumpstersServices"
+﻿import {DumpsterData, getAllDumpsters} from "../lib/hlb-api-library/src/dumpsters/domain/dumpstersServices"
 import {useEffect, useState} from "react";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import "./Dumpsters.css";

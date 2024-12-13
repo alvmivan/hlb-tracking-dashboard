@@ -1,7 +1,7 @@
-﻿import {Maybe} from "hlb-api-library/src/maybeMonad/Maybe";
+﻿import {Maybe} from "../lib/hlb-api-library/src/maybeMonad/Maybe";
 import {LocalCache} from "../LocalCache/LocalCache.ts";
-import {CompanyData, findCompany, getAllCompanies} from "hlb-api-library/src/companies/domain/companiesService.ts";
-import {maybeOf} from "hlb-api-library/src/maybeMonad/Maybe.ts";
+import {CompanyData, findCompany, getAllCompanies} from "../lib/hlb-api-library/src/companies/domain/companiesService";
+import {maybeOf} from "../lib/hlb-api-library/src/maybeMonad/Maybe";
 import {InitializationStep} from "../Initialization/initializationSteps.ts";
 
 let cache: LocalCache<number, CompanyData>;

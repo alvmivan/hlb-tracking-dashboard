@@ -5,7 +5,7 @@ import {
     DeliveryNoteOperationData,
     DeliveryNotesFilterData,
     getDeliveryNotes
-} from "hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
+} from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService";
 import {DateField} from "./Fields/DateField.tsx";
 import {TableComponent} from "../Tables/TableComponent.tsx";
 import {UserField} from "./Fields/UserField.tsx";

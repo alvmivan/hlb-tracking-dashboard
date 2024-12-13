@@ -1,7 +1,7 @@
 ﻿import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
-import { DumpsterData } from "hlb-api-library/src/dumpsters/domain/dumpstersServices";
+import { DumpsterData } from "../lib/hlb-api-library/src/dumpsters/domain/dumpstersServices";
 import { ReactElement, ReactNode } from "react";
 import './Dumpsters.css';
 

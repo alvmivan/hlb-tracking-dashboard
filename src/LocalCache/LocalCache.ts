@@ -1,5 +1,5 @@
-﻿import {AppCache} from "hlb-api-library/src/shared/appContext";
-import {just, Maybe, nothing} from "hlb-api-library/src/maybeMonad/Maybe";
+﻿import {AppCache} from "../lib/hlb-api-library/src/shared/appContext";
+import {Maybe, maybeOf, nothing} from "../lib/hlb-api-library/src/maybeMonad/Maybe";
 
 
 type SerializedDict<TKey, TValue> = {

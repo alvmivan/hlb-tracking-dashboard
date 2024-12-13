@@ -1,4 +1,4 @@
-﻿import {getLocalizationTable} from "hlb-api-library/src/localization/domain/localizationService.ts";
+﻿import {getLocalizedString} from "../lib/hlb-api-library/src/localization/domain/localizationService";
 
 const localizationCache: Map<string, string> = new Map();
 
@@ -12,7 +12,7 @@ export const localizeKey = (key: string) => {
 
     let localizationTable: LocalizationTable = {entries: [{key: "", value: ""}]};
     if (localizationCache.size === 0) {
-        localizationTable = getLocalizationTable();
+        localizationTable = getLocalizedString();
         const entries = localizationTable.entries;
         entries.forEach((entry) => localizationCache.set(entry.key, entry.value));
     }

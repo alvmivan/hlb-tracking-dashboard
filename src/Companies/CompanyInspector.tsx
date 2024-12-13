@@ -1,6 +1,6 @@
 ﻿import {useNavigate, useParams} from "react-router-dom";
-import {Maybe, nothing} from "hlb-api-library/src/maybeMonad/Maybe";
-import {CompanyData} from "hlb-api-library/src/companies/domain/companiesService.ts";
+import {Maybe, nothing} from "../lib/hlb-api-library/src/maybeMonad/Maybe";
+import {CompanyData} from "../lib/hlb-api-library/src/companies/domain/companiesService";
 import {useEffect, useState} from "react";
 import {fetchCompanyData} from "./Companies.ts";
 

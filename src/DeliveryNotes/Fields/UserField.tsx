@@ -1,7 +1,7 @@
 ﻿import {fetchUserData} from "../../Users/UsersData.ts";
 import {useEffect, useState} from "react";
-import {UserData} from "hlb-api-library/src/auth/domain/userData.ts";
-import {Maybe, nothing} from "hlb-api-library/src/maybeMonad/Maybe";
+import {UserData} from "../../lib/hlb-api-library/src/auth/domain/userData";
+import {Maybe, nothing} from "../../lib/hlb-api-library/src/maybeMonad/Maybe";
 import {NavigableField} from "./NavigableField.tsx";
 
 

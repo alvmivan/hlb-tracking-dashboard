@@ -1,7 +1,7 @@
 ﻿import {fetchCompanyData} from "../../Companies/Companies.ts";
 import {useEffect, useState} from "react";
-import {Maybe, nothing} from "hlb-api-library/src/maybeMonad/Maybe";
-import {CompanyData} from "hlb-api-library/src/companies/domain/companiesService.ts";
+import {Maybe, nothing} from "../../lib/hlb-api-library/src/maybeMonad/Maybe";
+import {CompanyData} from "../../lib/hlb-api-library/src/companies/domain/companiesService";
 
 import {NavigableField} from "./NavigableField.tsx";
 
