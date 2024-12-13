@@ -8,7 +8,9 @@
     "type-check": "tsc -b --noEmit",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-lib": "npm run backup-lib && rm -rf src/lib/hlb-api-library && git submodule add https://github.com/alvmivan/hlb-api-library.git src/lib/hlb-api-library && git submodule absorbgitdirs",
+    "backup-lib": "cp -r src/lib/hlb-api-library src/lib/hlb-api-library.backup"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.15",
