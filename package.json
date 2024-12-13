@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@types/leaflet": "^1.9.15",
-    "hlb-api-library": "https://github.com/alvmivan/hlb-api-library.git#v0.1.21",
+    "hlb-api-library": "git+https://github.com/alvmivan/hlb-api-library.git#v0.1.21",
     "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
