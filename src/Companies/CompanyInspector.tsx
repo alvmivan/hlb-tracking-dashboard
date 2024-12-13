@@ -6,7 +6,7 @@ import {fetchCompanyData} from "./Companies.ts";
 
 export const CompanyInspector = () => {
 
-    const {companyId} = useParams<{ companyId: number }>();
+    const {companyId} = useParams<{ companyId: string }>();
     const nav = useNavigate();
 
 
@@ -40,7 +40,7 @@ export const CompanyInspector = () => {
         if (alreadyAsked) return;
         setAlreadyAsked(true);
         companyData.doOnAbsent(() =>
-            fetchCompanyData(companyId).then(setCompanyData).catch(console.error)
+            fetchCompanyData(parseInt(companyId)).then(setCompanyData).catch(console.error)
         );
 
     });
