@@ -1,0 +1,91 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  position: relative;
+  transform: translateY(100%);
+  animation: slideUp 0.2s ease-out forwards;
+  overflow: hidden;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  min-width: 300px;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 
+
+.modal-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #fa7a7a80;
+  background: #fa7a7a20;
+  color: #fa7a7a;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+  line-height: 0;
+}
+
+.modal-close-button:hover {
+  border-color: #fa101080;
+  background: #fa101020;
+  color: #fa1010;
+  font-size: 35px;
+  transform: scale(1.1);
+} 
+
+.modal-title {
+  margin: 0 0 24px 0;
+  padding-right: 40px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.modal-body {
+  height: calc(100% - 64px);
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+} 
