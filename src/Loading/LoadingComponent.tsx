@@ -1,5 +1,6 @@
 ﻿import {useEffect, useState} from "react";
 import type { CSSProperties } from 'react';
+import './LoadingComponent.css';
 
 type LoadingComponentProps = {
     pieceLength: number;
@@ -65,8 +66,8 @@ export const LoadingComponent = (props: Partial<LoadingComponentProps>) => {
         const x = Math.cos(currentAngle * Math.PI / 180);
         const y = Math.sin(currentAngle * Math.PI / 180);
 
-        const xPos = x * pieceLength + pieceLength * 2 + offset.x;
-        const yPos = y * pieceLength + pieceLength * 2 + offset.y;
+        const xPos = x * pieceLength + offset.x + 60;
+        const yPos = y * pieceLength + offset.y + 60;
 
         const rotStyle = {
             transform: `rotate(${parseAngle(currentAngle)}deg)`,
@@ -82,7 +83,11 @@ export const LoadingComponent = (props: Partial<LoadingComponentProps>) => {
         return <span key={index} style={rotStyle}> </span>
     }
 
-    return (<div className={"loading-container"}>
-        {Array.from({length: 12}, (_, i) => createSpanAt(i / 12, i))}
-    </div>);
+    return (
+        <div className="loading-overlay">
+            <div className="loading-container">
+                {Array.from({length: 12}, (_, i) => createSpanAt(i / 12, i))}
+            </div>
+        </div>
+    );
 }

@@ -62,13 +62,13 @@ const App = () => {
         initialization().then();
     }, [preAuthInitializationCompleted, postAuthInitializationCompleted, isLogged]);
 
-    const loadingElement = <LoadingComponent/>;
+    const loadingElement = <LoadingComponent />;
 
-    if (!preAuthInitializationCompleted) return loadingElement
-    if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>
-    if (!postAuthInitializationCompleted) return loadingElement
+    if (!preAuthInitializationCompleted) return loadingElement;
+    if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>;
+    if (!postAuthInitializationCompleted) return loadingElement;
 
-    return <AppContent/>
+    return <AppContent/>;
 };
 
 export default App
