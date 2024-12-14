@@ -39,7 +39,7 @@ const authenticatedSteps: InitializationStep[] = [
         action: async () => {
             // Download operation types
             // wait 10 seconds
-            return new Promise(resolve => setTimeout(resolve, 10000));
+            return new Promise(resolve => setTimeout(resolve, 1000));
         }
     },
     initCompaniesCacheStep,

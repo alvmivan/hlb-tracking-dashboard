@@ -1,23 +1,24 @@
-﻿import {ElementToRender} from "../../Tables/TableComponent.tsx";
-import {Maybe} from "../../lib/hlb-api-library/src/maybeMonad/Maybe";
-import {useNavigate} from "react-router-dom";
-
+﻿import { ElementToRender } from "../../Tables/TableComponent.tsx";
+import { Maybe } from "../../lib/hlb-api-library/src/maybeMonad/Maybe";
+import { useNavigate } from "react-router-dom";
+import { NavigationArrow } from "../../StandandaloneComponents/NavigationArrow";
 
 const defaultElement = <div>Cargando...</div>;
 
 export const NavigableField = (props: { content: Maybe<ElementToRender>, path: string, default?: ElementToRender }) => {
-
     const navigate = useNavigate();
     const nav = () => navigate(props.path)
 
+    const containerStyle = {
+        position: 'relative' as const,
+        paddingRight: '4px',
+        margin: '4px'
+    }
+
     return props.content.map((content: ElementToRender) => (
-        <div className={"navigable-field-entry-container style-cursor-clickable"} onClick={nav}>
+        <div className={"navigable-field-entry-container style-cursor-clickable"} onClick={nav} style={containerStyle}>
             <span>{content}</span>
-            <button className={"navigable-field-see "} >
-                <img src="public/rightarrow.png" alt="Navigate"/>
-            </button>
+            <NavigationArrow />
         </div>
-
     )).orElse(props.default || defaultElement)
-
 }

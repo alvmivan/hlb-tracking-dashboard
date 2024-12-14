@@ -2,11 +2,12 @@
     DeliveryNoteFullData,
     DeliveryNoteOperationData
 } from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
-import {useState} from "react";
+import React, {useState} from "react";
 import {UserField} from "./Fields/UserField.tsx";
 import {CompanyField} from "./Fields/CompanyField.tsx";
 import {DateField} from "./Fields/DateField.tsx";
 import {TableComponent} from "../Tables/TableComponent.tsx";
+import {NavigationArrow} from "../StandandaloneComponents/NavigationArrow.tsx";
 
 function OperationField(props: { operation: DeliveryNoteOperationData, onClick?: () => void }) {
 
@@ -24,37 +25,43 @@ function OperationField(props: { operation: DeliveryNoteOperationData, onClick?:
 
 
 function DecompressedOperationsField(props: { compress: () => void, operations: DeliveryNoteOperationData[] }) {
-
+    const buttonStyle = {
+        marginTop: '12px',
+        marginLeft: '12px'
+    }
 
     return (
         <div>
-
-            <button className={"navigable-field-see navigable-field-see-rotate-90"} onClick={props.compress}>
-                <img src="public/rightarrow.png" alt="Navigate"/>
+            <button className={"navigable-field-see navigable-field-see-rotate-90"} onClick={props.compress} style={buttonStyle}>
+                <NavigationArrow/>
             </button>
 
-
             <div className={"operation-list-container"}>
-
                 {props.operations.map((operation, index) => {
                     return <div className={"operation-list-element"}>
                         <OperationField key={index} operation={operation}/>
                     </div>
                 })}
             </div>
-
         </div>
     );
 }
 
 function CompressedOperationsField(props: { extend: () => void, operations: DeliveryNoteOperationData[] }) {
+    const containerStyle = {
+        position: 'relative' as const,
+        display: 'flex',
+        alignItems: 'center',
+        paddingRight: '4px',
+        margin: '4px',
+        cursor: 'pointer'
+    }
+
     return (
-        <span className={"style-centered-aligned style-cursor-clickable"} onClick={props.extend}>
-            {props.operations.length} Operaciones <br></br>
-        <button className={"navigable-field-see"}>
-             <img src="public/rightarrow.png" alt="Navigate"/>
-        </button>
-        </span>
+        <div style={containerStyle} onClick={props.extend}>
+            <span>{props.operations.length} Operaciones</span>
+            <NavigationArrow />
+        </div>
     );
 }
 
