@@ -18,6 +18,7 @@ const navigationElements: (RouteData)[] = [
     {url: "/", element: <HomeScreen/>, buttonNameKey: "home"},
     {url: "/delivery-notes", element: <DeliveryNotesScreen/>, buttonNameKey: "delivery_notes"},
     {url: "/dumpsters", element: <DumpstersScreen/>, buttonNameKey: "dumpsters"},
+    {url: "/dumpsters/:dumpsterId", element: <DumpstersScreen/>},
     {url: "/user/:userId", element: <UserProfile/>},
     {url: "/company/:companyId", element: <CompanyInspector/>}
 ]

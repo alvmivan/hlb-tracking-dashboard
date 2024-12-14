@@ -1,22 +1,34 @@
 ﻿import {
+    DeliveryNoteData,
     DeliveryNoteFullData,
     DeliveryNoteOperationData
 } from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
-import React, {useState} from "react";
+import {useState} from "react";
 import {UserField} from "./Fields/UserField.tsx";
 import {CompanyField} from "./Fields/CompanyField.tsx";
 import {DateField} from "./Fields/DateField.tsx";
 import {TableComponent} from "../Tables/TableComponent.tsx";
 import {NavigationArrow} from "../StandandaloneComponents/NavigationArrow.tsx";
+import {OperationTypeField} from "./Operations/OperationTypeField.tsx";
+import {DumpsterField} from "../Dumpsters/DumpsterField.tsx";
+import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
-function OperationField(props: { operation: DeliveryNoteOperationData, onClick?: () => void }) {
+function OperationField(props: { note: DeliveryNoteData, operation: DeliveryNoteOperationData, onClick?: () => void }) {
 
     const onClick = props.onClick || (() => {
     });
 
     return (
         <span onClick={onClick} className={"style-cursor-clickable"}>
-            TypeID {props.operation.operationTypeId} Volquete: {props.operation.dumpsterId} GPS: {props.operation.gpsLocation.latitude} {props.operation.gpsLocation.longitude} 
+            <OperationTypeField
+                operationType={props.operation.operationTypeId}
+                isReadOnly={true}
+                note={props.note}
+            /> 
+            <br/>
+            <LocalizedLabel labelKey={"dumpster"}></LocalizedLabel> <DumpsterField dumpsterId={props.operation.dumpsterId}/>
+            <br/>            
+            GPS: {props.operation.gpsLocation.latitude} {props.operation.gpsLocation.longitude} 
         </span>
 
     )
@@ -24,7 +36,11 @@ function OperationField(props: { operation: DeliveryNoteOperationData, onClick?:
 }
 
 
-function DecompressedOperationsField(props: { compress: () => void, operations: DeliveryNoteOperationData[] }) {
+function DecompressedOperationsField(props: {
+    note: DeliveryNoteData,
+    compress: () => void,
+    operations: DeliveryNoteOperationData[]
+}) {
     const buttonStyle = {
         marginTop: '12px',
         marginLeft: '12px'
@@ -32,14 +48,15 @@ function DecompressedOperationsField(props: { compress: () => void, operations: 
 
     return (
         <div>
-            <button className={"navigable-field-see navigable-field-see-rotate-90"} onClick={props.compress} style={buttonStyle}>
+            <button className={"navigable-field-see navigable-field-see-rotate-90"} onClick={props.compress}
+                    style={buttonStyle}>
                 <NavigationArrow/>
             </button>
 
             <div className={"operation-list-container"}>
                 {props.operations.map((operation, index) => {
                     return <div className={"operation-list-element"}>
-                        <OperationField key={index} operation={operation}/>
+                        <OperationField note={props.note} key={index} operation={operation}/>
                     </div>
                 })}
             </div>
@@ -60,7 +77,7 @@ function CompressedOperationsField(props: { extend: () => void, operations: Deli
     return (
         <div style={containerStyle} onClick={props.extend}>
             <span>{props.operations.length} Operaciones</span>
-            <NavigationArrow />
+            <NavigationArrow/>
         </div>
     );
 }
@@ -100,7 +117,7 @@ export const NotesTable = (props: {
                 companyField,
                 userField,
                 <div className={"operation-list-element"}>
-                    <OperationField operation={note.operations[0]}/>,
+                    <OperationField note={note} operation={note.operations[0]}/>,
                 </div>,
                 observationsField,
                 dateField
@@ -119,7 +136,7 @@ export const NotesTable = (props: {
         return [
             companyField,
             userField,
-            <DecompressedOperationsField operations={note.operations} compress={removeIndex}/>,
+            <DecompressedOperationsField note={note} operations={note.operations} compress={removeIndex}/>,
             observationsField,
             dateField
         ]

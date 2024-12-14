@@ -2,6 +2,8 @@
 import {initStorageStep} from "./setupStorage.ts";
 import {initUsersCacheStep} from "../Users/UsersData.ts";
 import {initCompaniesCacheStep} from "../Companies/Companies.ts";
+import {loadOperationTypesStep} from "../DeliveryNotes/Operations/OperationTypes.ts";
+import {loadDumpstersStep} from "../Dumpsters/DumpstersData.ts";
 
 export type InitializationStep = {
     name: string,
@@ -33,16 +35,9 @@ const authenticatedSteps: InitializationStep[] = [
             // Download user data
         }
     },
-    {
-        name: "Download Operation Types",
-        description: "Download operation types from the server",
-        action: async () => {
-            // Download operation types
-            // wait 10 seconds
-            return new Promise(resolve => setTimeout(resolve, 1000));
-        }
-    },
+    loadOperationTypesStep,
     initCompaniesCacheStep,
+    loadDumpstersStep,
 ]
 
 export const runInitialization = async (isAuthenticated: boolean): Promise<boolean> => {

@@ -2,7 +2,8 @@
 import {useEffect, useState} from "react";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import "./Dumpsters.css";
-import { DumpstersMap } from "./DumpstersMap.tsx";
+import {DumpstersMap} from "./DumpstersMap.tsx";
+import {useParams} from "react-router-dom";
 
 async function fetchDumpsters(): Promise<DumpsterData[]> {
     const data: { dumpsters: DumpsterData[] } = await getAllDumpsters();
@@ -27,10 +28,17 @@ const DumpsterState = (props: { state: string }) => {
 
 }
 
-const DumpsterDataMini = (props: { dumpster: DumpsterData }) =>
-    <span>
-        #{props.dumpster.dumpsterCode} <DumpsterState state={props.dumpster.physicalState}/>
-    </span>
+export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () => void }) => {
+    const {dumpster, onClick} = props;
+
+    
+    const handleClick = onClick || (() => {
+    });
+
+    return <span onClick={handleClick} className={onClick === undefined ? "" : "style-cursor-clickable"}>
+        {dumpster.dumpsterCode} <DumpsterState state={dumpster.physicalState}/>
+    </span>;
+}
 
 const DumpsterSelectionColumn = (props: {
     dumpsters: DumpsterData[],
@@ -61,25 +69,38 @@ export const DumpstersScreen = () => {
     const [dumpsters, setDumpsters] = useState<DumpsterData[]>([]);
     const [selectedDumpster, setSelectedDumpster] = useState<DumpsterData | undefined>(undefined);
 
+    const {dumpsterId} = useParams<{ dumpsterId: string }>();
+
 
     useEffect(() => {
         if (dumpsters.length === 0) {
-            fetchDumpsters().then(setDumpsters);
+            fetchDumpsters().then((dumps) => {
+                console.log("dumpsterId", dumpsterId, dumps);
+                if (dumpsterId) {
+                    const selected = dumps.find(d => d.dumpsterId === parseInt(dumpsterId));
+                    if (selected) {
+                        setSelectedDumpster(selected);
+                        console.log("selected", selected);
+                    }
+                }
+                setDumpsters(dumps);
+
+            });
         }
-    }, [dumpsters, setDumpsters]);
+    }, [dumpsters, setDumpsters, dumpsterId, setSelectedDumpster]);
 
 
     return <div>
         <h1><LocalizedLabel labelKey={"dumpsters"}/></h1>
         <div className="dumpsters-screen-container">
-            <DumpsterSelectionColumn 
-                dumpsters={dumpsters} 
-                selectDumpster={setSelectedDumpster} 
+            <DumpsterSelectionColumn
+                dumpsters={dumpsters}
+                selectDumpster={setSelectedDumpster}
                 selected={selectedDumpster}
             />
-            <DumpstersMap 
-                dumpsters={dumpsters} 
-                selectDumpster={setSelectedDumpster} 
+            <DumpstersMap
+                dumpsters={dumpsters}
+                selectDumpster={setSelectedDumpster}
                 selected={selectedDumpster}
             />
             {/*<DumpsterInfo dumpster={selectedDumpster}/>*/}
