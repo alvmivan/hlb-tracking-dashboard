@@ -3,12 +3,13 @@ import {PaginationView} from "../Pagination/PaginationView.tsx";
 import {
     DeliveryNoteFullData,
     DeliveryNotesFilterData,
-    getDeliveryNotes
+    getDeliveryNotes, PaginatedNotes
 } from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService";
 
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import "./DeliveryNotes.css";
 import {NotesTable} from "./NotesTable.tsx";
+import {LoadingComponent} from "../Loading/LoadingComponent.tsx";
 
 
 const initialPage = 1;
@@ -18,6 +19,7 @@ export const DeliveryNotesScreen = () => {
 
 
     const [currentPage, setCurrentPage] = useState(initialPage);
+    const [totalPages, setTotalPages] = useState(1);
     const setPage = (page: number) => setCurrentPage(page < 1 ? 1 : page)
 
 
@@ -37,8 +39,14 @@ export const DeliveryNotesScreen = () => {
             ...filters,
             page: currentPage
         };
-
-        getDeliveryNotes(currentFilters).then(notes => setNotes(notes)).catch(e => console.error("error trayendo las delivery notes", e));
+        
+        async function loadDeliveryNotes(){
+            const data : PaginatedNotes = await getDeliveryNotes(currentFilters);
+            setNotes(data.notes);
+            setTotalPages(data.totalPages);
+        }
+        
+        loadDeliveryNotes().then();       
 
 
     }, [currentPage, filters])
@@ -50,8 +58,10 @@ export const DeliveryNotesScreen = () => {
             <h1><LocalizedLabel labelKey={"delivery_notes"}/>
             </h1>
 
-
-            <NotesTable data={notes} setNotes={setNotes}/>
+            {
+                notes.length===0 ? <LoadingComponent/> : <NotesTable data={notes} setNotes={setNotes}/>
+            }
+            
 
             <div className={"style-location-bottom"}>
                 <PaginationView
@@ -59,6 +69,7 @@ export const DeliveryNotesScreen = () => {
                     setCurrentPage={setPage}
                     buttonsBefore={2}
                     buttonsAfter={5}
+                    totalPages={totalPages}
                 />
             </div>
         </div>

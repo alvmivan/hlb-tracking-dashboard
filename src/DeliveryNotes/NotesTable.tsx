@@ -26,7 +26,8 @@ function OperationField(props: { note: DeliveryNoteData, operation: DeliveryNote
                 note={props.note}
             /> 
             <br/>
-            <LocalizedLabel labelKey={"dumpster"}></LocalizedLabel> <DumpsterField dumpsterId={props.operation.dumpsterId}/>
+            <LocalizedLabel labelKey={"dumpster"}></LocalizedLabel> <DumpsterField
+            dumpsterId={props.operation.dumpsterId}/>
             <br/>            
             GPS: {props.operation.gpsLocation.latitude} {props.operation.gpsLocation.longitude} 
         </span>
@@ -35,12 +36,12 @@ function OperationField(props: { note: DeliveryNoteData, operation: DeliveryNote
 
 }
 
-
-function DecompressedOperationsField(props: {
+type DecompressedOperationsFieldProps = {
     note: DeliveryNoteData,
     compress: () => void,
     operations: DeliveryNoteOperationData[]
-}) {
+}
+function DecompressedOperationsField(props: DecompressedOperationsFieldProps) {
     const buttonStyle = {
         marginTop: '12px',
         marginLeft: '12px'
@@ -63,6 +64,17 @@ function DecompressedOperationsField(props: {
         </div>
     );
 }
+
+
+export function StateField(props: { note: DeliveryNoteFullData, setNotes: (notes: DeliveryNoteFullData[]) => void, notes: DeliveryNoteFullData[] }) {
+    
+    // const {note, setNotes, notes} = props;
+    
+    return <>Not Implemented</>
+    
+}
+
+
 
 function CompressedOperationsField(props: { extend: () => void, operations: DeliveryNoteOperationData[] }) {
     const containerStyle = {
@@ -98,6 +110,7 @@ export const NotesTable = (props: {
         "operations",
         "observations",
         "date",
+        "state",
     ];
 
     const rows = data.map((note: DeliveryNoteFullData, index) => {
@@ -107,6 +120,11 @@ export const NotesTable = (props: {
         const companyField = <CompanyField companyId={note.companyId}/>;
         const dateField = <DateField date={note.date}/>;
         const observationsField = note.observations;
+        const stateField = <StateField
+            note={note}
+            setNotes={props.setNotes}
+            notes={data}
+        />
 
 
         const removeIndex = () => setExtendedNoteIndex(extendedNoteIndex.filter(i => i !== index));
@@ -120,7 +138,8 @@ export const NotesTable = (props: {
                     <OperationField note={note} operation={note.operations[0]}/>,
                 </div>,
                 observationsField,
-                dateField
+                dateField,
+                stateField
             ]
         }
 
@@ -130,7 +149,8 @@ export const NotesTable = (props: {
                 userField,
                 <CompressedOperationsField operations={note.operations} extend={addIndex}/>,
                 observationsField,
-                dateField
+                dateField,
+                stateField
             ]
 
         return [
@@ -138,13 +158,14 @@ export const NotesTable = (props: {
             userField,
             <DecompressedOperationsField note={note} operations={note.operations} compress={removeIndex}/>,
             observationsField,
-            dateField
+            dateField,
+            stateField
         ]
 
 
     });
-    const operationsSize = extendedNoteIndex.length > 0 ? 8 : 8;
-    const sizes = [2, 2, operationsSize, 3, 2];
+
+    const sizes = [2, 2, 8, 3, 2, 2];
 
     return <TableComponent headers={headers} rows={rows} sizes={sizes}/>
 

@@ -6,6 +6,7 @@ export type PaginatedViewConfig = {
     setCurrentPage: (page: number) => void;
     buttonsBefore?: number;
     buttonsAfter?: number;
+    totalPages: number;
 }
 
 const PaginationButton = (props: { text: string, page: number, setPage: (page: number) => void, active?: boolean }) => {
@@ -40,34 +41,66 @@ const CurrentPageLabel = (props: { currentPage: number }) => {
 }
 
 export const PaginationView = (props: PaginatedViewConfig) => {
-
-    const {currentPage, setCurrentPage} = props;
-
-
-    const buttonBegin = 1;
-    const buttonPlus10 = currentPage + 10;
+    const {currentPage, setCurrentPage, totalPages} = props;
     const amountButtonsBefore = props.buttonsBefore || 1;
     const amountButtonsAfter = props.buttonsAfter || 1;
 
     const buttons = [];
-    buttons.push(<PaginationButton key={10000000} text={"«"} page={buttonBegin} setPage={setCurrentPage}/>)
+    
+    // First page button
+    buttons.push(
+        <PaginationButton 
+            key={10000000} 
+            text={"«"} 
+            page={1} 
+            setPage={setCurrentPage}
+            active={currentPage !== 1}
+        />
+    );
+
+    // Previous page buttons
     for (let i = currentPage - amountButtonsBefore; i < currentPage; i++) {
-        buttons.push(<PaginationButton key={i*2+1} text={i.toString()} page={i} setPage={setCurrentPage}/>)
+        if (i >= 1) {
+            buttons.push(
+                <PaginationButton 
+                    key={i*2+1} 
+                    text={i.toString()} 
+                    page={i} 
+                    setPage={setCurrentPage}
+                />
+            );
+        }
     }
 
-    buttons.push(<CurrentPageLabel key={100000001} currentPage={currentPage}/>)
+    // Current page
+    buttons.push(<CurrentPageLabel key={100000001} currentPage={currentPage}/>);
 
-    for (let i = currentPage + 1; i <= currentPage + amountButtonsAfter; i++) {
-        buttons.push(<PaginationButton key={i*2} text={i.toString()} page={i} setPage={setCurrentPage}/>)
+    // Next page buttons
+    for (let i = currentPage + 1; i <= Math.min(currentPage + amountButtonsAfter, totalPages); i++) {
+        buttons.push(
+            <PaginationButton 
+                key={i*2} 
+                text={i.toString()} 
+                page={i} 
+                setPage={setCurrentPage}
+            />
+        );
     }
 
-    buttons.push(<PaginationButton key={100000002} text={"»"} page={buttonPlus10} setPage={setCurrentPage}/>)
+    // Last page button
+    buttons.push(
+        <PaginationButton 
+            key={100000002} 
+            text={"»"} 
+            page={totalPages} 
+            setPage={setCurrentPage}
+            active={currentPage !== totalPages}
+        />
+    );
 
     return (
         <div className={"pagination-buttons-container"}>
-            {
-                buttons
-            }
+            {buttons}
         </div>
-    )
+    );
 }
