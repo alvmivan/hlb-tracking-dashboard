@@ -11,10 +11,11 @@ initializeStorage();
 
 configSettings(
     {
-        IsDebug: true,
+        IsDebug: false,
         config:
             {
-                API_URL: "http://localhost:3000/api"
+                API_URL: "https://hlb-tracking-backend.vercel.app/api",
+                //API_URL: "http://localhost:3000/api",
             }
     }
 );
