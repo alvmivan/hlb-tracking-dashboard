@@ -1,0 +1,79 @@
+﻿.style-button {
+    border-radius: 4px;
+    height: auto;
+    width: 100px;
+    margin: 5px;
+    padding: 5px;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+/* Variante amarilla */
+.style-button.yellow {
+    background-color: #ffff0020;
+    border: 2px solid #ffff00a0;
+}
+
+.style-button.yellow:hover {
+    background-color: #ffff0040;
+}
+
+/* Variante azul */
+.style-button.blue {
+    background-color: #0000ff20;
+    border: 2px solid #0000ffa0;
+}
+
+.style-button.blue:hover {
+    background-color: #0000ff40;
+}
+
+/* Variante verde */
+.style-button.green {
+    background-color: #00ff0020;
+    border: 2px solid #00ff00a0;
+}
+
+.style-button.green:hover {
+    background-color: #00ff0040;
+}
+
+/* Variante roja */
+.style-button.red {
+    background-color: #ff000020;
+    border: 2px solid #ff0000a0;
+}
+
+.style-button.red:hover {
+    background-color: #ff000040;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: monospace;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 9999999;
+    transform: translate(-50%, -125%); 
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.button-container {
+    display: flex;
+    gap: 18px;
+}

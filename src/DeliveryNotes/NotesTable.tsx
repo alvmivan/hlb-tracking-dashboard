@@ -12,6 +12,7 @@ import {NavigationArrow} from "../StandandaloneComponents/NavigationArrow.tsx";
 import {OperationTypeField} from "./Operations/OperationTypeField.tsx";
 import {DumpsterField} from "../Dumpsters/DumpsterField.tsx";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
+import {StateField} from "./StateField.tsx";
 
 function OperationField(props: { note: DeliveryNoteData, operation: DeliveryNoteOperationData, onClick?: () => void }) {
 
@@ -41,6 +42,7 @@ type DecompressedOperationsFieldProps = {
     compress: () => void,
     operations: DeliveryNoteOperationData[]
 }
+
 function DecompressedOperationsField(props: DecompressedOperationsFieldProps) {
     const buttonStyle = {
         marginTop: '12px',
@@ -64,16 +66,6 @@ function DecompressedOperationsField(props: DecompressedOperationsFieldProps) {
         </div>
     );
 }
-
-
-export function StateField(props: { note: DeliveryNoteFullData, setNotes: (notes: DeliveryNoteFullData[]) => void, notes: DeliveryNoteFullData[] }) {
-    
-    // const {note, setNotes, notes} = props;
-    
-    return <>Not Implemented</>
-    
-}
-
 
 
 function CompressedOperationsField(props: { extend: () => void, operations: DeliveryNoteOperationData[] }) {
@@ -110,7 +102,7 @@ export const NotesTable = (props: {
         "operations",
         "observations",
         "date",
-        "state",
+        "approval_status",
     ];
 
     const rows = data.map((note: DeliveryNoteFullData, index) => {

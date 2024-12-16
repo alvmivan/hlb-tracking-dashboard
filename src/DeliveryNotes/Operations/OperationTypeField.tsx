@@ -1,6 +1,6 @@
 ﻿import {getOperationType} from "./OperationTypes.ts";
 import {DeliveryNoteData} from "../../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
-import {CompanyField, CompanyNameField} from "../Fields/CompanyField.tsx";
+import {CompanyNameField} from "../Fields/CompanyField.tsx";
 import {ReactNode} from "react";
 
 

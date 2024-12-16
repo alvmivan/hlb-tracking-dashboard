@@ -10,7 +10,7 @@ export type TableData = {
 }
 
 function getCurrentWidth() {
-    return window.innerWidth - 140;
+    return window.innerWidth - 165;
 }
 
 function getPixelsDistribution(headers: string[]) {

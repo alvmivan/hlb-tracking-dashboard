@@ -9,7 +9,7 @@ import {UserProfile} from "./Users/UserProfile.tsx";
 import {CompanyInspector} from "./Companies/CompanyInspector.tsx";
 import {DumpstersScreen} from "./Dumpsters/DumpstersScreen.tsx";
 import {LoadingComponent} from "./Loading/LoadingComponent.tsx";
-
+import "./Buttons.css"
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
 }

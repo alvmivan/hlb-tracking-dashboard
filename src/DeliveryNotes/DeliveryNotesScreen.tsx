@@ -68,7 +68,7 @@ export const DeliveryNotesScreen = () => {
                     currentPage={currentPage}
                     setCurrentPage={setPage}
                     buttonsBefore={2}
-                    buttonsAfter={5}
+                    buttonsAfter={2}
                     totalPages={totalPages}
                 />
             </div>
