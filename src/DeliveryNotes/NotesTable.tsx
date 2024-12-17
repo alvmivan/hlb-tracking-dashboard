@@ -102,7 +102,7 @@ export const NotesTable = (props: {
         "operations",
         "observations",
         "date",
-        "approval_status",
+        "actions_column",
     ];
 
     const rows = data.map((note: DeliveryNoteFullData, index) => {

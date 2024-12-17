@@ -13,6 +13,9 @@ const apiUrl = isProd
     ? "https://hlb-tracking-backend.vercel.app/api"
     : "http://localhost:3000/api";
 
+console.log('isProd', isProd);
+console.log('apiUrl', apiUrl);
+
 configSettings(
     {
         IsDebug: !isProd,

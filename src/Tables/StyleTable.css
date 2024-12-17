@@ -1,8 +1,10 @@
 ﻿/*main container of the table*/
 .style-table-container {
-    width: 100%;
+    width: calc(100% - 40px);
     border: 1px solid #fff7;
-    margin-bottom: 1220px;
+    margin-bottom: 1220px;    
+    margin-left: 20px;
+    
 }
 
 
