@@ -4,81 +4,110 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0, 0.4);
-  backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  animation: fadeIn .3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    background: rgba(0, 0, 30, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background: rgba(0, 0, 30, 0.6);
+    backdrop-filter: blur(8px);
+  }
 }
 
 .modal-content {
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  padding: 24px;
+  border-radius: 4px;
+  background: #303030d0;
+  box-shadow: 
+    0 20px 40px #fafafa20,
+    0 0 0 2px #000000f0;
+  padding: 28px;
   position: relative;
-  transform: translateY(100%);
-  animation: slideUp 0.2s ease-out forwards;
+  transform: scale(0.95) translateY(30px);
+  opacity: 0;
+  animation: modalEnter 0.2s cubic-bezier(0.16, 2, 0.4, 1) forwards;
+  animation-delay: .2s;
   overflow: hidden;
-  background: transparent;
-  backdrop-filter: blur(2px);
   min-width: 300px;
 }
 
-@keyframes slideUp {
+@keyframes modalEnter {
   from {
-    transform: translateY(100%);
+    transform: scale(0.95) translateY(50px);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
     opacity: 1;
   }
-} 
+}
 
 .modal-close-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 20px;
+  right: 20px;
   width: 32px;
   height: 32px;
-  border: 1px solid #fa7a7a80;
-  background: #fa7a7a20;
-  color: #fa7a7a;
-  border-radius: 50%;
-  font-size: 20px;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  color: #999;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
   line-height: 0;
+  opacity: 0;
+  animation: fadeInButton 0.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .modal-close-button:hover {
-  border-color: #fa101080;
-  background: #fa101020;
-  color: #fa1010;
-  font-size: 35px;
-  transform: scale(1.1);
-} 
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+  transform: scale(1.05);
+}
 
 .modal-title {
   margin: 0 0 24px 0;
   padding-right: 40px;
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.25rem;
+  font-weight: 600;
+  
   letter-spacing: -0.01em;
 }
 
 .modal-body {
   height: calc(100% - 64px);
   overflow-y: auto;
-  padding-right: 8px;
+  padding-right: 12px;  
+  line-height: 1.5;
 }
 
 .modal-body::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .modal-body::-webkit-scrollbar-track {
@@ -86,6 +115,10 @@
 }
 
 .modal-body::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.15);
 } 
