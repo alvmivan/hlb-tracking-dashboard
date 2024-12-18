@@ -108,14 +108,14 @@ export function ActionsField(props: {
             <button className="style-button green tooltip" onClick={askApproval}>
                 <FontAwesomeIcon icon={faCheck}/>
                 <span className="tooltiptext">
-                    <LocalizedLabel labelKey={"approve"}></LocalizedLabel>
+                    <LocalizedLabel labelKey={"approve_button"}></LocalizedLabel>
                 </span>
             </button>
 
             <button className="style-button yellow tooltip" onClick={goEdition}>
                 <FontAwesomeIcon icon={faPen}/>
                 <span className="tooltiptext">
-                    <LocalizedLabel labelKey={"edit"}></LocalizedLabel>
+                    <LocalizedLabel labelKey={"edit_button"}></LocalizedLabel>
                 </span>
             </button>
 

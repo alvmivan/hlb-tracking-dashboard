@@ -91,11 +91,11 @@
 
 /* Usando el mismo patrón de color-mix que tienes en style-button */
 .global-button {
-    --button-color: #808080;
-    background-color: transparent;
+    --button-color: #808080; 
     border: 2px solid color-mix(in srgb, var(--button-color) 40%, transparent);
     color: color-mix(in srgb, var(--button-color) 15%, currentColor);
     transition: all .2s;
+    background-color: transparent;
 }
 
 .global-button:hover {
@@ -115,12 +115,11 @@
 
 .global-button.ok {
     --button-color: #2d7dd2;
-    background-color: transparent;
 }
 
 .global-button.cancel {
-    --button-color: #d64045;
-    background-color: transparent;
+    /*--button-color: #d64045;    */
+    --button-color: #cb9191;    
 }
 
 .ok-cancel-bar {

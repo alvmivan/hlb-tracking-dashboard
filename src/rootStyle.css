@@ -17,17 +17,12 @@
     color-scheme: dark;
     color: #fafaffde;
     background-color: #202335;
-    /*background-color: #202324;*/
-
-
 }
 
 html {
     overflow: hidden;
 }
 
-
-/*Estilo de las barras de scroll*/
 
 ::-webkit-scrollbar {
     background-color: #303670;

@@ -4,8 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(0px);
+  background: rgba(0, 0, 0, 0); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,12 +14,10 @@
 
 @keyframes fadeIn {
   from {
-    background: rgba(0, 0, 30, 0);
-    backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0); 
   }
   to {
-    background: rgba(0, 0, 30, 0.6);
-    backdrop-filter: blur(8px);
+    background: #10101080; 
   }
 }
 
@@ -28,8 +25,10 @@
   border-radius: 4px;
   background: #303030d0;
   box-shadow: 
-    0 20px 40px #fafafa20,
-    0 0 0 1px #000000a0;
+    -5px 5px 10px #12121280,
+    0 0 0 1px #00000080
+    
+;
   padding: 28px;
   position: relative;
   transform: scale(0.95) translateY(30px);

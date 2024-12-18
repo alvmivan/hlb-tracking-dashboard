@@ -28,7 +28,9 @@ function OperationField(props: { note: DeliveryNoteData, operation: DeliveryNote
             /> 
             <br/>
             <LocalizedLabel labelKey={"dumpster"}></LocalizedLabel> <DumpsterField
-            dumpsterId={props.operation.dumpsterId}/>
+            dumpsterId={props.operation.dumpsterId}
+            stateChange={props.operation.dumpsterPhysicalStatusChange}
+        />
             <br/>            
             GPS: {props.operation.gpsLocation.latitude} {props.operation.gpsLocation.longitude} 
         </span>
