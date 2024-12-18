@@ -14,7 +14,6 @@ import {LoadingComponent} from "../Loading/LoadingComponent.tsx";
 
 const initialPage = 1;
 
-
 export const DeliveryNotesScreen = () => {
 
 

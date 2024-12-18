@@ -21,6 +21,12 @@
     transition: all 0.2s ease;
 }
 
+.style-button:active {
+    transform: scale(0.8);    
+    background-color: color-mix(in srgb, var(--button-color) 45%, transparent);
+    border: 2px solid color-mix(in srgb, var(--button-color) 10%, transparent);
+}
+
 
 /* Definición de colores para cada variante */
 .style-button.yellow {
@@ -76,25 +82,50 @@
     height: auto;
     width: 100px;
     margin: 5px;
-    padding: 5px;
+    padding: 8px 16px;
     transition: all 0.2s ease;
     cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
+/* Usando el mismo patrón de color-mix que tienes en style-button */
+.global-button {
+    --button-color: #808080;
+    background-color: transparent;
+    border: 2px solid color-mix(in srgb, var(--button-color) 40%, transparent);
+    color: color-mix(in srgb, var(--button-color) 15%, currentColor);
+    transition: all .2s;
+}
+
+.global-button:hover {
+    background-color: color-mix(in srgb, var(--button-color) 15%, transparent);
+    border: 2px solid color-mix(in srgb, var(--button-color) 70%, transparent);
+    transition: all .2s;
+}
+
+.global-button:active {
+    transform: scale(0.90);
+    background-color: color-mix(in srgb, var(--button-color) 25%, transparent);
+    border: 2px solid color-mix(in srgb, var(--button-color) 85%, transparent);
+    color: color-mix(in srgb, var(--button-color) 75%, currentColor);
+    transition: all .15s;
+}
+
+
 .global-button.ok {
-    background-color: #28a745;
-    color: white;
-    border: none;
+    --button-color: #2d7dd2;
+    background-color: transparent;
 }
 
 .global-button.cancel {
-    background-color: #dc3545;
-    color: white;
-    border: none;
+    --button-color: #d64045;
+    background-color: transparent;
 }
 
 .ok-cancel-bar {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 0 0 0;
 }
