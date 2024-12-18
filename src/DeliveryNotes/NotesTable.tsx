@@ -12,7 +12,7 @@ import {NavigationArrow} from "../StandandaloneComponents/NavigationArrow.tsx";
 import {OperationTypeField} from "./Operations/OperationTypeField.tsx";
 import {DumpsterField} from "../Dumpsters/DumpsterField.tsx";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
-import {StateField} from "./StateField.tsx";
+import {ActionsField} from "./ActionsField.tsx";
 
 function OperationField(props: { note: DeliveryNoteData, operation: DeliveryNoteOperationData, onClick?: () => void }) {
 
@@ -112,7 +112,7 @@ export const NotesTable = (props: {
         const companyField = <CompanyField companyId={note.companyId}/>;
         const dateField = <DateField date={note.date}/>;
         const observationsField = note.observations;
-        const stateField = <StateField
+        const actionsField = <ActionsField
             note={note}
             setNotes={props.setNotes}
             notes={data}
@@ -131,7 +131,7 @@ export const NotesTable = (props: {
                 </div>,
                 observationsField,
                 dateField,
-                stateField
+                actionsField
             ]
         }
 
@@ -142,7 +142,7 @@ export const NotesTable = (props: {
                 <CompressedOperationsField operations={note.operations} extend={addIndex}/>,
                 observationsField,
                 dateField,
-                stateField
+                actionsField
             ]
 
         return [
@@ -151,7 +151,7 @@ export const NotesTable = (props: {
             <DecompressedOperationsField note={note} operations={note.operations} compress={removeIndex}/>,
             observationsField,
             dateField,
-            stateField
+            actionsField
         ]
 
 

@@ -1,13 +1,11 @@
 ﻿import {useNavigate} from "react-router-dom";
-import {DumpsterData} from "../lib/hlb-api-library/src/dumpsters/domain/dumpstersServices.ts";
 import {getDumpster} from "./DumpstersData.ts";
 import {DumpsterDataMini} from "./DumpstersScreen.tsx";
 
-let dumpstersCache: DumpsterData[] = [];
 
-export const DumpsterField = (props: { dumpsterId: number }) => {
+export const DumpsterField = (props: { dumpsterId: number, stateChange?: string }) => {
 
-    const {dumpsterId} = props;
+    const {dumpsterId, stateChange} = props;
     const nav = useNavigate();
     const data = getDumpster(dumpsterId);
 
@@ -20,8 +18,9 @@ export const DumpsterField = (props: { dumpsterId: number }) => {
             <DumpsterDataMini
                 dumpster={data}
                 onClick={selectDumpster}
+                stateChange={stateChange}
             />
         );
 
-    return <>ID {props.dumpsterId} inválido</>;
+    return <>ID {dumpsterId} inválido</>;
 }

@@ -10,7 +10,7 @@ import {localizeKey} from "../Localization/LocalizeKey.ts";
 import {OkCancelButtons} from "../GlobalButtons.tsx";
 
 
-export function StateField(props: {
+export function ActionsField(props: {
     note: DeliveryNoteFullData,
     setNotes: (notes: DeliveryNoteFullData[]) => void,
     notes: DeliveryNoteFullData[]

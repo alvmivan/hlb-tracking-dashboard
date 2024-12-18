@@ -28,15 +28,21 @@ const DumpsterState = (props: { state: string }) => {
 
 }
 
-export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () => void }) => {
-    const {dumpster, onClick} = props;
+export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () => void, stateChange?: string }) => {
+    const {dumpster, onClick, stateChange} = props;
 
-    
+
     const handleClick = onClick || (() => {
     });
 
     return <span onClick={handleClick} className={onClick === undefined ? "" : "style-cursor-clickable"}>
-        {dumpster.dumpsterCode} <DumpsterState state={dumpster.physicalState}/>
+        {dumpster.dumpsterCode}
+        <DumpsterState state={dumpster.physicalState}/>
+        {
+            stateChange ? <> ➡ <DumpsterState state={stateChange}/> </>
+                //todo dibujar la flecha con ícono de fontawesome
+                : null
+        }
     </span>;
 }
 
