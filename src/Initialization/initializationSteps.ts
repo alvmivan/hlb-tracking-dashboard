@@ -31,8 +31,8 @@ const authenticatedSteps: InitializationStep[] = [
     {
         name: "Download User Data",
         description: "Download user data from the server",
-        action: async () => {
-            // Download user data
+        action: async () => {            
+            await new Promise(resolve => setTimeout(resolve, 1000));
         }
     },
     loadOperationTypesStep,
