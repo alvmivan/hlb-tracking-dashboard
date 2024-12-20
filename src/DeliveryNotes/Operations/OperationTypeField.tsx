@@ -19,7 +19,7 @@ export const OperationTypeField = (props: { operationType: number, isReadOnly: b
             // use <CompanyNameField companyId={note.companyId}/> in the place where Cliente was
             const before = opType.substring(0, opType.indexOf(clientKey));
             const after = opType.substring(opType.indexOf(clientKey) + clientKey.length);
-            content = <>{before}<CompanyNameField companyId={note.companyId}/>{after}</>
+            content = <>{before}< CompanyNameField companyId={note.companyId} />{after}</>
         } else {
             content = opType;
         }

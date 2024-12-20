@@ -21,14 +21,10 @@ const GlobalButton = (props: ButtonProps) => {
     )
 }
 
-export const OkButton = (props: ButtonProps) => {
-    return <GlobalButton {...props} className="ok"/>
-}
-
-export const CancelButton = (props: ButtonProps) => {
-    return <GlobalButton {...props} className="cancel"/>
-}
-
+export const OkButton = (props: ButtonProps) => <GlobalButton {...props} className="ok"/>
+export const CancelButton = (props: ButtonProps) => <GlobalButton {...props} className="cancel"/>
+export const CreateButton = (props: ButtonProps) => <GlobalButton {...props} className="create"/>
+export const DeleteButton = (props: ButtonProps) => <GlobalButton {...props} className="delete"/>
 
 export type OkCancelBarProps = {
     onOk: () => void;

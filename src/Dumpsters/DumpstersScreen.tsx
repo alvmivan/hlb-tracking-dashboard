@@ -1,31 +1,19 @@
-﻿import {DumpsterData, getAllDumpsters} from "../lib/hlb-api-library/src/dumpsters/domain/dumpstersServices"
+﻿import {
+    deleteDumpster as deleteDumpsterFromApi,
+    DumpsterData,
+    getAllDumpsters
+} from "../lib/hlb-api-library/src/dumpsters/domain/dumpstersServices"
 import {useEffect, useState} from "react";
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import "./Dumpsters.css";
 import {DumpstersMap} from "./DumpstersMap.tsx";
 import {useParams} from "react-router-dom";
+import {DumpsterInspectorPanel} from "./DumpsterInspectorPanel.tsx";
+import {DumpsterState} from "./DumpsterState.tsx";
 
 async function fetchDumpsters(): Promise<DumpsterData[]> {
     const data: { dumpsters: DumpsterData[] } = await getAllDumpsters();
     return data.dumpsters;
-}
-
-const DumpsterState = (props: { state: string }) => {
-
-    type state = 'GOOD' | 'BURNED' | 'NEED_REPAIR';
-
-    const styleMap = {
-        'GOOD': "dumpster-state-label-good",
-        'BURNED': "dumpster-state-label-burned",
-        'NEED_REPAIR': "dumpster-state-label-need-repair"
-    }
-
-    const specificStyle = styleMap[props.state as state];
-
-    const label = <LocalizedLabel labelKey={props.state}/>
-    return <span className={"dumpster-state-label " + specificStyle}> {label} </span>
-
-
 }
 
 export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () => void, stateChange?: string }) => {
@@ -39,7 +27,7 @@ export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () =
         {dumpster.dumpsterCode}
         <DumpsterState state={dumpster.physicalState}/>
         {
-            stateChange ? <> ➡ <DumpsterState state={stateChange}/> </>
+            stateChange && stateChange !== dumpster.physicalState ? <> ➡ <DumpsterState state={stateChange}/> </>
                 //todo dibujar la flecha con ícono de fontawesome
                 : null
         }
@@ -72,11 +60,20 @@ const DumpsterSelectionColumn = (props: {
 
 export const DumpstersScreen = () => {
 
+
     const [dumpsters, setDumpsters] = useState<DumpsterData[]>([]);
     const [selectedDumpster, setSelectedDumpster] = useState<DumpsterData | undefined>(undefined);
-
     const {dumpsterId} = useParams<{ dumpsterId: string }>();
 
+
+    const deleteDumpster = async (dumpster: DumpsterData | undefined) => {
+        if (!dumpster) return;
+        const newDumpsters = dumpsters.filter(d => d.dumpsterId !== dumpster.dumpsterId);
+        setSelectedDumpster(undefined);
+        setDumpsters(newDumpsters);
+        await deleteDumpsterFromApi(dumpster.dumpsterId);
+
+    }
 
     useEffect(() => {
         if (dumpsters.length === 0) {
@@ -109,7 +106,13 @@ export const DumpstersScreen = () => {
                 selectDumpster={setSelectedDumpster}
                 selected={selectedDumpster}
             />
-            {/*<DumpsterInfo dumpster={selectedDumpster}/>*/}
+            <div>
+                <DumpsterInspectorPanel
+                    selectedDumpster={selectedDumpster}
+                    onDelete={deleteDumpster}
+                />
+            </div>
+
         </div>
     </div>
 

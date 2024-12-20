@@ -90,13 +90,14 @@ function CompressedOperationsField(props: { extend: () => void, operations: Deli
 
 export const NotesTable = (props: {
     data: DeliveryNoteFullData[],
-    setNotes: (notes: DeliveryNoteFullData[]) => void
+    setNotes: (notes: DeliveryNoteFullData[]) => void,
+    reload: () => void
 }) => {
 
-
+    
     const [extendedNoteIndex, setExtendedNoteIndex] = useState<number[]>([]);
 
-    const {data} = props;
+    const {data,reload} = props;
 
     const headers = [
         "company",
@@ -118,6 +119,7 @@ export const NotesTable = (props: {
             note={note}
             setNotes={props.setNotes}
             notes={data}
+            reload={reload}
         />
 
 

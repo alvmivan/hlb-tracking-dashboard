@@ -17,7 +17,7 @@
 }
 
 .dumpster-selection-column-container {
-    width: 12%;
+    width: 15%;
 }
 
 .dumpster-state-label {
@@ -26,6 +26,11 @@
     font-size: 12px;
     font-family: monospace;
     margin: 10px;
+    white-space: nowrap;
+
+
+    min-width: 100px;
+    text-align: center;
 }
 
 .dumpster-state-label-good {
@@ -62,15 +67,25 @@
 
 .dumpsters-map-container {
     height: 100%;
-    width: 60%;    
+    width: 60%;
 }
 
 .dumpsters-map {
-    
+
     border-radius: 0;
     border: 1px solid #00000080;
-    
-    
-    
-    
+}
+
+/*container de la edicion de dumpsters (a la derecha y le queda el 30% del espacio) */
+.dumpsters-editor {
+
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #00000080;
+    background-color: #ffffff10;
+
 }

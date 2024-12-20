@@ -75,7 +75,6 @@
 .style-content-flex {
     display: flex;
 
-
     align-items: center;
 
 
@@ -83,6 +82,11 @@
     justify-content: flex-start;
 }
 
+.style-content-flow{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
 .style-content-horizontal-full {
     display: flex;
@@ -96,6 +100,18 @@
     padding: 0 2%;
 }
 
+.style-content-justified{
+    display: flex;    
+    align-items: center;
+    justify-content: space-between;    
+}
+
+
+.style-content-vertical-full {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .style-cursor-clickable {
     cursor: pointer;
@@ -114,4 +130,79 @@
 .style-scrollable-column75 {
     overflow-y: auto;
     max-height: 75vh;
+}
+
+.style-self-margin-10 {
+    margin: 10px;
+    padding: 10px;
+}
+
+.style-self-margin-5 {
+    margin: 5px;
+    padding: 5px;
+}
+
+.style-self-margin-20 {
+    margin: 20px;
+    padding: 20px;
+}
+
+
+.style-force-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.style-children-directs-height{
+    height: fit-content;
+}
+
+.style-children-directs-width{
+    width: fit-content;
+}
+
+.style-content-spacing-10 {
+    gap: 10px;
+}
+
+.style-content-spacing-05 {
+    gap: 5px;
+}
+
+.style-content-spacing-15 {
+    gap: 15px;
+}
+
+
+
+.style-justify-self-horizontally {
+    width: 100vh;
+    flex: 1;
+}
+
+
+
+/*labels*/
+
+
+.style-label-field {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: monospace;
+    color: currentColor;
+    margin: 4px;
+}
+
+
+/*paddings*/
+
+.style-padding-05 {
+    padding: 5px;
+}
+
+.style-padding-02 {
+    padding: 2px;
+}
+.style-width-15{
+    width: 15vw;
 }

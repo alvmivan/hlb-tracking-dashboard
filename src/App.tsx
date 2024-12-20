@@ -9,7 +9,8 @@ import {UserProfile} from "./Users/UserProfile.tsx";
 import {CompanyInspector} from "./Companies/CompanyInspector.tsx";
 import {DumpstersScreen} from "./Dumpsters/DumpstersScreen.tsx";
 import {LoadingComponent} from "./Loading/LoadingComponent.tsx";
-import "./Buttons.css"
+import "./Buttons.css" 
+
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
 }
@@ -28,11 +29,13 @@ const AppContent = () => <>
     <NavigationBar
         elements={navigationElements.filter(element => element.buttonNameKey !== undefined)}
     />
-    <Routes>
-        {navigationElements.map((element, index) =>
-            <Route key={index} path={element.url} element={element.element}/>
-        )}
-    </Routes>
+    
+        <Routes>
+            {navigationElements.map((element, index) =>
+                <Route key={index} path={element.url} element={element.element}/>
+            )}
+        </Routes>
+    
 </>;
 
 const App = () => {
@@ -63,7 +66,7 @@ const App = () => {
         initialization().then();
     }, [preAuthInitializationCompleted, postAuthInitializationCompleted, isLogged]);
 
-    const loadingElement = <LoadingComponent />;
+    const loadingElement = <LoadingComponent/>;
 
     if (!preAuthInitializationCompleted) return loadingElement;
     if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>;

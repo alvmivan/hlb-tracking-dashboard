@@ -22,7 +22,7 @@
 }
 
 .style-button:active {
-    transform: scale(0.8);    
+    transform: scale(0.8);
     background-color: color-mix(in srgb, var(--button-color) 45%, transparent);
     border: 2px solid color-mix(in srgb, var(--button-color) 10%, transparent);
 }
@@ -91,7 +91,7 @@
 
 /* Usando el mismo patrón de color-mix que tienes en style-button */
 .global-button {
-    --button-color: #808080; 
+    --button-color: #808080;
     border: 2px solid color-mix(in srgb, var(--button-color) 40%, transparent);
     color: color-mix(in srgb, var(--button-color) 15%, currentColor);
     transition: all .2s;
@@ -118,8 +118,15 @@
 }
 
 .global-button.cancel {
-    /*--button-color: #d64045;    */
-    --button-color: #cb9191;    
+    --button-color: #cb9191;
+}
+
+.global-button.create {
+    --button-color: #4caf50;
+}
+
+.global-button.delete {
+    --button-color: #f55336;
 }
 
 .ok-cancel-bar {

@@ -1,9 +1,12 @@
-﻿import {DeliveryNoteFullData} from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
+﻿import {
+    approveDeliveryNote,
+    DeliveryNoteFullData
+} from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
 import "../Buttons.css"
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheck, faPen, faXmark} from '@fortawesome/free-solid-svg-icons';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {ElementToRender} from "../Tables/TableComponent.tsx";
 import {Modal} from "../Modal/Modal.tsx";
 import {localizeKey} from "../Localization/LocalizeKey.ts";
@@ -13,12 +16,15 @@ import {OkCancelButtons} from "../GlobalButtons.tsx";
 export function ActionsField(props: {
     note: DeliveryNoteFullData,
     setNotes: (notes: DeliveryNoteFullData[]) => void,
-    notes: DeliveryNoteFullData[]
+    notes: DeliveryNoteFullData[],
+    reload: () => void
 }) {
 
     const [modalContent, setModalContent] = useState<{ element: ElementToRender, title: string } | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+
+    const {note, reload} = props;
 
     if (isModalOpen && modalContent) {
         return <Modal
@@ -47,30 +53,39 @@ export function ActionsField(props: {
     const approve = async () => {
         console.log("will approve ... testing... ");
         //await 1 sec
-        await new Promise<void>((resolve) => {
-            setTimeout(() => resolve(), 1000)
+        await approveDeliveryNote({
+            ...note,
+            wasEdited: false,
+            driverId: note.userId
         });
+        
+        
     }
+
     const reject = async () => {
         console.log("will reject ... testing... ");
         await new Promise<void>((resolve) => {
-            setTimeout(() => resolve(), 1000)
+            setTimeout(resolve, 1000);
         });
+
+        reload();
     }
 
 
     const askApproval = async () => {
         showModal("approve_confirmation_title",
-            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
                 <div>
                     <LocalizedLabel labelKey={"approve_confirmation_message"}/>
                 </div>
-                
-                <div style={{ marginTop: 'auto' }}>
-                    <OkCancelButtons 
-                        onOk={() => approve().then(closeModal)} 
+
+                <div style={{marginTop: 'auto'}}>
+                    <OkCancelButtons
+                        onOk={() => approve().then(closeModal).then(()=>{
+                            reload(); 
+                        })}
                         onCancel={closeModal}
-                        okLabel={"approve_action"} 
+                        okLabel={"approve_action"}
                         cancelLabel={"cancel"}
                     />
                 </div>
@@ -79,16 +94,16 @@ export function ActionsField(props: {
     }
 
     const askRejection = () => {
-        showModal("reject_confirmation_title", 
-            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        showModal("reject_confirmation_title",
+            <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
                 <div>
                     <LocalizedLabel labelKey={"reject_confirmation_message"}/>
                 </div>
-                
-                <div style={{ marginTop: 'auto' }}>
-                    <OkCancelButtons 
-                        onOk={() => reject().then(closeModal)} 
-                        onCancel={closeModal} 
+
+                <div style={{marginTop: 'auto'}}>
+                    <OkCancelButtons
+                        onOk={() => reject().then(closeModal)}
+                        onCancel={closeModal}
                         okLabel={"reject_action"}
                         cancelLabel={"cancel"}
                     />

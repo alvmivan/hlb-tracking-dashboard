@@ -11,6 +11,9 @@ import "./DeliveryNotes.css";
 import {NotesTable} from "./NotesTable.tsx";
 import {LoadingComponent} from "../Loading/LoadingComponent.tsx";
 
+import {ReloadProvider} from "../Reload/ReloadProvider.tsx";
+import {just, Maybe, maybeOf, nothing} from "../lib/hlb-api-library/src/maybeMonad/Maybe.ts";
+
 
 const initialPage = 1;
 
@@ -29,26 +32,41 @@ export const DeliveryNotesScreen = () => {
         byOperatorId: []
     })
 
-    const [notes, setNotes] = React.useState(new Array<DeliveryNoteFullData>());
+    const [notes, setNotes] = React.useState<Maybe<DeliveryNoteFullData[]>>(nothing());
+    const [delayedReloadFlag, setDelayedReloadFlag] = useState(false);
 
 
     useEffect(() => {
 
         const currentFilters: DeliveryNotesFilterData = {
             ...filters,
-            page: currentPage
+            page: currentPage,
+            byApproval: ["PENDING"]
         };
-        
-        async function loadDeliveryNotes(){
-            const data : PaginatedNotes = await getDeliveryNotes(currentFilters);
-            setNotes(data.notes);
+
+        async function loadDeliveryNotes() {
+
+            if (delayedReloadFlag) {
+                setDelayedReloadFlag(false);
+                setNotes(nothing());
+                //wait 1 second
+                await new Promise(r => setTimeout(r, 1000));
+            }
+            const data: PaginatedNotes = await getDeliveryNotes(currentFilters);
+            setNotes(just(data.notes));
             setTotalPages(data.totalPages);
+
+
         }
-        
-        loadDeliveryNotes().then();       
+
+        loadDeliveryNotes().then();
 
 
-    }, [currentPage, filters])
+    }, [currentPage, filters, notes, delayedReloadFlag])
+
+    const reload = () => {
+        setDelayedReloadFlag(true);
+    }
 
 
     return (<div className={"style-content-vertical-full"}>
@@ -58,9 +76,15 @@ export const DeliveryNotesScreen = () => {
             </h1>
 
             {
-                notes.length===0 ? <LoadingComponent/> : <NotesTable data={notes} setNotes={setNotes}/>
+                notes.map(deliveryNotes => deliveryNotes.length > 0 ?
+                    
+                    <NotesTable data={deliveryNotes} setNotes={n => setNotes(just(n))} reload={reload}/> :
+                    
+                    <LocalizedLabel labelKey={"no_pending_delivery_notes"}></LocalizedLabel>  )
+                    
+                    .orElse(<LoadingComponent/>)
             }
-            
+
 
             <div className={"style-location-bottom"}>
                 <PaginationView
@@ -71,6 +95,7 @@ export const DeliveryNotesScreen = () => {
                     totalPages={totalPages}
                 />
             </div>
+
         </div>
     )
 
