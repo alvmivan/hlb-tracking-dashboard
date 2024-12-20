@@ -10,8 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "backup-lib": "node scripts/backup-lib.js",
-    "remove-lib": "node scripts/remove-lib.js",    
-    "update-submodule": "bash update-submodule.sh"
+    "remove-lib": "node scripts/remove-lib.js",
+    "update-submodule": "update-submodule.cmd"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
