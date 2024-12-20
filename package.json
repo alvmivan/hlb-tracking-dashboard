@@ -10,8 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "backup-lib": "node scripts/backup-lib.js",
-    "remove-lib": "node scripts/remove-lib.js",
-    "update-lib": "npm run backup-lib && npm run remove-lib && git submodule add -f https://github.com/alvmivan/hlb-api-library.git src/lib/hlb-api-library && git submodule absorbgitdirs && rimraf src/lib/hlb-api-library.backup"
+    "remove-lib": "node scripts/remove-lib.js",    
+    "update-submodule": "bash update-submodule.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
