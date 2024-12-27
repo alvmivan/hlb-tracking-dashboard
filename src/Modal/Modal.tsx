@@ -1,13 +1,14 @@
 import {ReactNode, useEffect} from 'react';
 import './Modal.css';
 
-interface ModalProps {
+export interface ModalProps {
     width?: number;
     height?: number;
     onClose: () => void;
     title?: string;
     children: ReactNode;
 }
+
 
 export const Modal = ({
                           width = 75,
@@ -52,7 +53,7 @@ export const Modal = ({
                 className="modal-content"
                 style={{
                     width: `${width}%`,
-                    height: `${height}%` 
+                    height: `${height}%`
                 }}
             >
                 <button className="modal-close-button" onClick={onClose}>
