@@ -6,11 +6,9 @@ import "../Buttons.css"
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheck, faPen, faXmark} from '@fortawesome/free-solid-svg-icons';
-import {useContext, useState} from "react";
-import {ElementToRender} from "../Tables/TableComponent.tsx";
-import {Modal} from "../Modal/Modal.tsx";
-import {localizeKey} from "../Localization/LocalizeKey.ts";
-import {OkCancelButtons} from "../GlobalButtons.tsx";
+import {useModal} from "../Modal/ModalContext.tsx";
+import {useLoading} from "../Loading/LoadingContext.tsx";
+import {ReactNode} from "react";
 
 
 export function ActionsField(props: {
@@ -20,35 +18,37 @@ export function ActionsField(props: {
     reload: () => void
 }) {
 
-    const [modalContent, setModalContent] = useState<{ element: ElementToRender, title: string } | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const {showModal, closeModal} = useModal();
+    const {setLoading} = useLoading();
 
     const {note, reload} = props;
 
-    if (isModalOpen && modalContent) {
-        return <Modal
-            onClose={() => setIsModalOpen(false)}
-            title={modalContent.title}
-            height={30}
-            width={50}
-
-        >
-            {modalContent.element}
-        </Modal>
-    }
-
-    const showModal = (titleKey: string, element: ElementToRender) => {
-        setModalContent({element, title: localizeKey(titleKey) || titleKey});
-        setIsModalOpen(true);
-    }
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setModalContent(null);
-    }
-
     const approvalStatus = props.note.approvalStatus;
+
+    const wrapAction = async (func: () => Promise<void>) => {
+        setLoading(true, false);
+        await func();
+        reload();
+        setLoading(false, false);
+    }
+
+
+    const displayOptionsModal = (title: string, contentMessage: string, onOk: () => Promise<void>, okText: string, cancelText: string = "cancel") => {
+        showModal({
+            title,
+            children: <LocalizedLabel labelKey={contentMessage}/>,
+            height: 30,
+            width: 40,
+            optionButtons: {
+                onOk: async () => {
+                    closeModal();
+                    await wrapAction(onOk);
+
+                }, okText, cancelText, onCancel: closeModal,
+            }
+        });
+    }
 
     const approve = async () => {
         console.log("will approve ... testing... ");
@@ -58,8 +58,6 @@ export function ActionsField(props: {
             wasEdited: false,
             driverId: note.userId
         });
-        
-        
     }
 
     const reject = async () => {
@@ -67,55 +65,41 @@ export function ActionsField(props: {
         await new Promise<void>((resolve) => {
             setTimeout(resolve, 1000);
         });
+    }
 
-        reload();
+    const approveEdited = async () => {
+        console.log("will approve edited ... testing... ");
+        await approveDeliveryNote({
+            ...note,
+            isCourtesy: !note.isCourtesy, // para testear vamos a poner cómo diff que cambia el valor de cortesía
+            wasEdited: true,
+            driverId: note.userId
+        });
+
     }
 
 
-    const askApproval = async () => {
-        showModal("approve_confirmation_title",
-            <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
-                <div>
-                    <LocalizedLabel labelKey={"approve_confirmation_message"}/>
-                </div>
+    const askApproval = () => displayOptionsModal(
+        "approve_confirmation_title",
+        "approve_confirmation_message",
+        approve,
+        "approve_action",
+    )
 
-                <div style={{marginTop: 'auto'}}>
-                    <OkCancelButtons
-                        onOk={() => approve().then(closeModal).then(()=>{
-                            reload(); 
-                        })}
-                        onCancel={closeModal}
-                        okLabel={"approve_action"}
-                        cancelLabel={"cancel"}
-                    />
-                </div>
-            </div>
-        )
-    }
-
-    const askRejection = () => {
-        showModal("reject_confirmation_title",
-            <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
-                <div>
-                    <LocalizedLabel labelKey={"reject_confirmation_message"}/>
-                </div>
-
-                <div style={{marginTop: 'auto'}}>
-                    <OkCancelButtons
-                        onOk={() => reject().then(closeModal)}
-                        onCancel={closeModal}
-                        okLabel={"reject_action"}
-                        cancelLabel={"cancel"}
-                    />
-                </div>
-            </div>
-        )
-    }
+    const askRejection = () => displayOptionsModal(
+        "reject_confirmation_title",
+        "reject_confirmation_message",
+        reject,
+        "reject_action"
+    )
 
 
-    const goEdition = () => {
-
-    }
+    const goEdition = () => displayOptionsModal(
+        "edit_delivery_note",
+        " Esta es la parte donde vamos a editar el remito :)",
+        approveEdited,
+        "save_and_approve"
+    )
 
 
     if (approvalStatus === 'PENDING') {

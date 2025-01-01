@@ -9,7 +9,9 @@ import {UserProfile} from "./Users/UserProfile.tsx";
 import {CompanyInspector} from "./Companies/CompanyInspector.tsx";
 import {DumpstersScreen} from "./Dumpsters/DumpstersScreen.tsx";
 import {LoadingComponent} from "./Loading/LoadingComponent.tsx";
-import "./Buttons.css" 
+import "./Buttons.css"
+import {ModalProvider} from "./Modal/ModalContext.tsx";
+import {LoadingProvider} from "./Loading/LoadingContext.tsx";
 
 type RouteData = NavigationElementData & {
     element: React.ReactElement | React.ReactNode;
@@ -29,13 +31,13 @@ const AppContent = () => <>
     <NavigationBar
         elements={navigationElements.filter(element => element.buttonNameKey !== undefined)}
     />
-    
-        <Routes>
-            {navigationElements.map((element, index) =>
-                <Route key={index} path={element.url} element={element.element}/>
-            )}
-        </Routes>
-    
+
+    <Routes>
+        {navigationElements.map((element, index) =>
+            <Route key={index} path={element.url} element={element.element}/>
+        )}
+    </Routes>
+
 </>;
 
 const App = () => {
@@ -72,7 +74,13 @@ const App = () => {
     if (!isLogged) return <LoginComponent setIsLogged={setIsLogged}/>;
     if (!postAuthInitializationCompleted) return loadingElement;
 
-    return <AppContent/>;
+    return <>
+        <LoadingProvider>
+            <ModalProvider>
+                <AppContent/>
+            </ModalProvider>
+        </LoadingProvider>
+    </>;
 };
 
-export default App
+export default App;

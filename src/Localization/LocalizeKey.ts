@@ -19,7 +19,7 @@ export const localizeKey = (key: string) => {
 
     if (localizationCache.has(key)) return localizationCache.get(key);
 
-    console.warn(key + " not found in localization table ", localizationTable);
+    //console.warn(key + " not found in localization table ", localizationTable);
     return "<< " + key + " >>";
 
 }
