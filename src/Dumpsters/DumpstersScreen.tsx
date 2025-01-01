@@ -69,6 +69,30 @@ export const DumpsterSelectionColumn = (props: {
 }
 
 
+const sortForGps = (dumpsters: DumpsterData[]) => {
+    //then sort by code
+    function compareStrings(a: string, b: string): number {
+
+        // if both strings are numbers we compare them as numbers
+        if (!isNaN(Number(a)) && !isNaN(Number(b))) {
+            return Number(a) - Number(b);
+        }
+
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    }
+
+    function compareDumpsters(a: DumpsterData, b: DumpsterData): number {
+        return compareStrings(a.dumpsterCode, b.dumpsterCode);
+    }
+
+    const withGps = dumpsters.filter(hasValidCoordinates).sort(compareDumpsters);
+    const withoutGps = dumpsters.filter(d => !hasValidCoordinates(d)).sort(compareDumpsters);
+    return [...withGps, ...withoutGps];
+}
+
+
 export const DumpstersScreen = () => {
 
 
@@ -81,6 +105,7 @@ export const DumpstersScreen = () => {
         if (!dumpster) return;
         const newDumpsters = dumpsters.filter(d => d.dumpsterId !== dumpster.dumpsterId);
         setSelectedDumpster(undefined);
+
         setDumpsters(newDumpsters);
         await deleteDumpsterFromApi(dumpster.dumpsterId);
 
@@ -88,18 +113,20 @@ export const DumpstersScreen = () => {
 
     useEffect(() => {
         if (dumpsters.length === 0) {
-            fetchDumpsters().then((dumps) => {
-                console.log("dumpsterId", dumpsterId, dumps);
-                if (dumpsterId) {
-                    const selected = dumps.find(d => d.dumpsterId === parseInt(dumpsterId));
-                    if (selected) {
-                        setSelectedDumpster(selected);
-                        console.log("selected", selected);
+            fetchDumpsters()
+                .then(dumps => sortForGps(dumps))
+                .then((dumps) => {
+                    console.log("dumpsterId", dumpsterId, dumps);
+                    if (dumpsterId) {
+                        const selected = dumps.find(d => d.dumpsterId === parseInt(dumpsterId));
+                        if (selected) {
+                            setSelectedDumpster(selected);
+                            console.log("selected", selected);
+                        }
                     }
-                }
-                setDumpsters(dumps);
+                    setDumpsters(dumps);
 
-            });
+                });
         }
     }, [dumpsters, setDumpsters, dumpsterId, setSelectedDumpster]);
 
