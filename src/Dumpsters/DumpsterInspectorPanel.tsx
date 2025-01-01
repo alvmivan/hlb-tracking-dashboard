@@ -8,7 +8,7 @@ import {DumpsterState} from "./DumpsterState.tsx";
 
 
 function DataPairCard(props: { children: any }) {
-    return <div className={"style-force-vertical style-card-15 style-padding-05"}>
+    return <div className={"style-force-vertical style-card-10 style-padding-02 style-self-margin-2  style-font-monospaced"}>
         {props.children}
     </div>
 
@@ -68,7 +68,7 @@ export function DumpsterInspectorPanel(props: {
 
 
     return <div
-        className={" style-card-15 style-force-vertical style-children-directs-height style-content-spacing-05 style-padding-05 style-width-15"}>
+        className={"style-fixed-column75 style-card-15 style-force-vertical style-children-directs-height style-content-spacing-05 style-padding-05 style-width-15 "}>
         {isCreating ?
             <DumpsterCreation
                 onCancel={() => setIsCreating(false)}

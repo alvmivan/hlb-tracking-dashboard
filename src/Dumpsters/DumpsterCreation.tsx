@@ -79,31 +79,36 @@ export function DumpsterCreation(props: { onCancel: () => void, onCreated: () =>
         </Modal>
     }
 
+    const cardType = " style-card-15 "
+
 
     return (
-        <div className={"style-card-15 style-justify-content style-self-margin-5"}>
+        <div className={`${cardType} style-justify-content  `}>
 
-            <h3 className={"style-padding-05"}><LocalizedLabel labelKey={"create_new_dumpster"}/></h3>
+            <h3 className={"style-font-center-text"}><LocalizedLabel labelKey={"create_new_dumpster"} className={"style-font-single-line"}/></h3>
 
-            <div className={"style-card-05 style-self-margin-10 style-force-vertical "}>
+            <div className={cardType+
+                "style-self-margin-horizontal- v5 " +
+                "style-self-margin-vertical- v5 " +
+                "style-force-vertical"}>
 
                 <LocalizedLabel labelKey={"dumpster_code"} className={"style-label-field"}/>
                 <input type="text" value={dumpsterCode} onChange={(e) => setDumpsterCode(e.target.value)}/>
 
             </div>
-            <div className={"style-card-05 style-self-margin-10 style-force-vertical"}>
+            <div className={cardType +
+                "style-self-margin-horizontal- v5 " +
+                "style-self-margin-vertical- v5 " +
+                "style-force-vertical"}>
 
                 <LocalizedLabel labelKey={"dumpster_type"} className={"style-label-field"}/>
                 <input type="text" value={dumpsterType} onChange={(e) => setDumpsterType(e.target.value)}/>
 
             </div>
-
-            <CreateButton
-                onClick={askCreation}
-                label={"create"}>
-            </CreateButton>
-
-            <CancelButton onClick={props.onCancel} label={"cancel"}/>
+            <div className={cardType }>
+                <CreateButton onClick={askCreation} label={"create"}/>
+                <CancelButton onClick={props.onCancel} label={"cancel"}/>
+            </div>
 
 
         </div>

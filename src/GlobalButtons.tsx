@@ -12,7 +12,7 @@ const GlobalButton = (props: ButtonProps) => {
     const label = props.label;
     let span = <span>{label}</span>
     if (localizeKey(label)) {
-        span = <LocalizedLabel labelKey={label}/>
+        span = <LocalizedLabel labelKey={label}  />
     }
     return (
         <button className={"global-button " + props.className} onClick={props.onClick}>

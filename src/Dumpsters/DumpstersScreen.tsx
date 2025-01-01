@@ -45,7 +45,7 @@ export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () =
     </span>;
 }
 
-const DumpsterSelectionColumn = (props: {
+export const DumpsterSelectionColumn = (props: {
     dumpsters: DumpsterData[],
     selectDumpster: (dumpster: DumpsterData) => void,
     selected: DumpsterData | undefined

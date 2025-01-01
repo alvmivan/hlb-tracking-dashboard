@@ -82,7 +82,7 @@
     justify-content: flex-start;
 }
 
-.style-content-flow{
+.style-content-flow {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -100,10 +100,10 @@
     padding: 0 2%;
 }
 
-.style-content-justified{
-    display: flex;    
+.style-content-justified {
+    display: flex;
     align-items: center;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
 
@@ -132,6 +132,7 @@
     max-height: 75vh;
 }
 
+
 .style-self-margin-10 {
     margin: 10px;
     padding: 10px;
@@ -142,10 +143,60 @@
     padding: 5px;
 }
 
+.style-self-margin-2 {
+    margin: 2px;
+    padding: 2px;
+}
+
 .style-self-margin-20 {
     margin: 20px;
     padding: 20px;
 }
+.style-self-margin-horizontal-{
+    --amountH: 10px;
+    margin-left: var(--amountH);
+    margin-right: var(--amountH);
+    padding-left: var(--amountH);
+    padding-right: var(--amountH);
+}
+.style-self-margin-vertical-{
+    --amount: 10px;
+    margin-top: var(--amount);
+    margin-bottom: var(--amount);
+    padding-top: var(--amount);
+    padding-bottom: var(--amount);
+}
+
+/*instantiate them with 2 5 10 15 and 20*/
+
+.style-self-margin-horizontal-.v1{--amountH: 1px;}
+.style-self-margin-horizontal-.v2{--amountH: 2px;}
+.style-self-margin-horizontal-.v5{--amountH: 5px;}
+.style-self-margin-horizontal-.v10{--amountH: 10px;}
+.style-self-margin-horizontal-.v15{--amountH: 15px;}
+.style-self-margin-horizontal-.v20{--amountH: 20px;}
+
+.style-self-margin-vertical-.v2{--amount: 2px;}
+.style-self-margin-vertical-.v5{--amount: 5px;}
+.style-self-margin-vertical-.v10{--amount: 10px;}
+.style-self-margin-vertical-.v15{--amount: 15px;}
+.style-self-margin-vertical-.v20{--amount: 20px;}
+
+
+/*.style-self-margin-horizontal-10 {*/
+/*    margin-left: 10px;*/
+/*    margin-right: 10px;*/
+/*    padding-left: 10px;*/
+/*    padding-right: 10px;*/
+/*}*/
+
+/*.style-self-margin-vertical-10 {*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+/*    padding-top: 10px;*/
+/*    padding-bottom: 10px;*/
+/*}*/
+
 
 
 .style-force-vertical {
@@ -153,11 +204,16 @@
     flex-direction: column;
 }
 
-.style-children-directs-height{
+.style-force-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.style-children-directs-height {
     height: fit-content;
 }
 
-.style-children-directs-width{
+.style-children-directs-width {
     width: fit-content;
 }
 
@@ -174,19 +230,17 @@
 }
 
 
-
 .style-justify-self-horizontally {
     width: 100vh;
     flex: 1;
 }
 
 
-
 /*labels*/
 
 
 .style-label-field {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
     font-family: monospace;
     color: currentColor;
@@ -203,6 +257,25 @@
 .style-padding-02 {
     padding: 2px;
 }
-.style-width-15{
+
+.style-width-15 {
     width: 15vw;
+}
+
+/*Fonts*/
+.style-font-monospaced {
+    font-family: monospace;
+}
+
+.style-font-little {
+    font-size: 0.7rem;
+}
+
+.style-font-single-line {
+    white-space: nowrap;
+}
+
+.style-font-center-text
+{
+    text-align: center;
 }
