@@ -77,24 +77,28 @@ export const DeliveryNotesScreen = () => {
 
             {
                 notes.map(deliveryNotes => deliveryNotes.length > 0 ?
-                    
+
                     <NotesTable data={deliveryNotes} setNotes={n => setNotes(just(n))} reload={reload}/> :
-                    
+
                     <LocalizedLabel labelKey={"no_pending_delivery_notes"}></LocalizedLabel>  )
-                    
+
                     .orElse(<LoadingComponent/>)
             }
 
 
-            <div className={"style-location-bottom"}>
-                <PaginationView
-                    currentPage={currentPage}
-                    setCurrentPage={setPage}
-                    buttonsBefore={2}
-                    buttonsAfter={2}
-                    totalPages={totalPages}
-                />
-            </div>
+            {
+                totalPages > 1 ?
+                    <div className={"style-location-bottom"}>
+                        <PaginationView
+                            currentPage={currentPage}
+                            setCurrentPage={setPage}
+                            buttonsBefore={2}
+                            buttonsAfter={2}
+                            totalPages={totalPages}
+                        />
+                    </div>
+                    : null
+            }
 
         </div>
     )
