@@ -1,6 +1,6 @@
 ﻿import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 
-export const DumpsterState = (props: { state: string }) => {
+export const DumpsterState = (props: { state: string, extraLabels?: DumpsterLabelData[] }) => {
 
     type state = keyof typeof styleMap;
 
@@ -13,7 +13,23 @@ export const DumpsterState = (props: { state: string }) => {
     const specificStyle = styleMap[props.state as state];
 
     const label = <LocalizedLabel labelKey={props.state}/>
-    return <span className={"dumpster-state-label " + specificStyle}> {label} </span>
-
+    return <>
+        <span className={"dumpster-state-label " + specificStyle}> {label} </span>
+        {
+            props.extraLabels && props.extraLabels.length > 0 ?
+                props.extraLabels.map((labelData, index) => <DumpsterLabel key={index} {...labelData}/>)
+                : null
+        }
+    </>
 
 }
+
+export type LabelStyle = "no-gps" | "courtesy";
+export type DumpsterLabelData = { label: string, labelStyle: LabelStyle };
+export const DumpsterLabel = (props: DumpsterLabelData) => {
+
+    const label = <LocalizedLabel labelKey={props.label}/>
+    return <span className={"dumpster-state-label  dumpster-label-" + props.labelStyle}> {label} </span>
+
+}
+

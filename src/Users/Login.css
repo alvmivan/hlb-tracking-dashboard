@@ -6,11 +6,13 @@
     align-items: center;
     width: 100%;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 2vh auto;
+
     padding: 2rem;
-    border-radius: 2px;
+    /*border-radius: 2px;*/
     background-color: #ffffff05;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 
 /*esto va a ser para cada entrada de input (usuario y pass) , van a ser child de login-card*/
@@ -18,13 +20,14 @@
 .login-entry {
 
     display: flex;
-    
+
     justify-content: space-between;
     padding: 10px;
-    height: 10vh;
+    height: 5vh;
     min-height: 10vh;
     max-height: 15vh;
     width: 100%;
+    margin: 10px;
 }
 
 
@@ -33,12 +36,12 @@
     height: 45px;
     width: 100%;
     padding: 10px;
-    
+
 }
 
 .login-entry-form::placeholder {
     padding: 10px;
-/*    italica*/
+    /*    italica*/
     font-style: italic;
     color: #ffffff;
     opacity: 0.1;
@@ -55,14 +58,14 @@
     width: 80%;
 }
 
-.login-error{
+.login-error {
 
     border: 2px solid #ff000050;
     background-color: #ff000005;
     font-size: 1rem;
     /*make font ultra thin*/
     font-weight: 100;
-    
+
     color: #f00;
     padding: 10px;
     margin: 10px 0;

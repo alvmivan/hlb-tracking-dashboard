@@ -70,7 +70,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
     }
 
     if (isGettingCache) {
-        return <LoadingComponent/>        
+        return <LoadingComponent/>
     }
 
     return (
@@ -87,7 +87,7 @@ export const LoginComponent = (props: LoginComponentParams) => {
                         setUserName(e.target.value);
                         setError('');
                     }}
-                    
+
                 />
             </div>
             <div className={"login-entry"}>
@@ -101,12 +101,12 @@ export const LoginComponent = (props: LoginComponentParams) => {
                         setPassword(e.target.value);
                         setError('');
                     }}
-                    
+
                 />
             </div>
 
             <button onClick={handleSubmit}
-                    className={"login-submit"}>
+                    className={"login-submit login-entry"}>
 
                 <LocalizedLabel labelKey={"login_submit"}/>
             </button>

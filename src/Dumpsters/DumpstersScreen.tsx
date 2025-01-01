@@ -9,11 +9,18 @@ import "./Dumpsters.css";
 import {DumpstersMap} from "./DumpstersMap.tsx";
 import {useParams} from "react-router-dom";
 import {DumpsterInspectorPanel} from "./DumpsterInspectorPanel.tsx";
-import {DumpsterState} from "./DumpsterState.tsx";
+import {DumpsterLabelData, DumpsterState} from "./DumpsterState.tsx";
 
 async function fetchDumpsters(): Promise<DumpsterData[]> {
     const data: { dumpsters: DumpsterData[] } = await getAllDumpsters();
     return data.dumpsters;
+}
+
+const hasValidCoordinates = (dumpster: DumpsterData) => {
+    if (!dumpster.gpsCoordinates) return false;
+    const gps = dumpster.gpsCoordinates;
+
+    return gps.latitude && gps.latitude !== 0 && gps.longitude && gps.longitude !== 0;
 }
 
 export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () => void, stateChange?: string }) => {
@@ -23,9 +30,13 @@ export const DumpsterDataMini = (props: { dumpster: DumpsterData, onClick?: () =
     const handleClick = onClick || (() => {
     });
 
+    const extraLabels: DumpsterLabelData[] = [
+        ...(!hasValidCoordinates(dumpster) ? [{label: "no_gps", labelStyle: "no-gps"} as DumpsterLabelData] : []),
+    ]
+
     return <span onClick={handleClick} className={onClick === undefined ? "" : "style-cursor-clickable"}>
         {dumpster.dumpsterCode}
-        <DumpsterState state={dumpster.physicalState}/>
+        <DumpsterState state={dumpster.physicalState} extraLabels={extraLabels}/>
         {
             stateChange && stateChange !== dumpster.physicalState ? <> ➡ <DumpsterState state={stateChange}/> </>
                 //todo dibujar la flecha con ícono de fontawesome

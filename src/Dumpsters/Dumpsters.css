@@ -17,7 +17,7 @@
 }
 
 .dumpster-selection-column-container {
-    width: 15%;
+    width: min(max(210px, 15%), 20%);
 }
 
 .dumpster-state-label {
@@ -46,6 +46,16 @@
 .dumpster-state-label-need-repair {
     border: 1px solid #ffaa0090;
     background-color: #ffaa0010;
+}
+
+.dumpster-label-no-gps {
+    border: 1px solid #90808090;
+    background-color: #a0808010
+}
+
+.dumpster-label-courtesy {
+    border: 1px solid #a0a0fa90;
+    background-color: #afaffa10
 }
 
 .leaflet-container {
