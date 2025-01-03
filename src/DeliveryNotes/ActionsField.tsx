@@ -1,6 +1,6 @@
 ﻿import {
     approveDeliveryNote,
-    DeliveryNoteFullData
+    DeliveryNoteFullData, rejectDeliveryNote
 } from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
 import "../Buttons.css"
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
@@ -51,8 +51,7 @@ export function ActionsField(props: {
     }
 
     const approve = async () => {
-        console.log("will approve ... testing... ");
-        //await 1 sec
+
         await approveDeliveryNote({
             ...note,
             wasEdited: false,
@@ -61,14 +60,11 @@ export function ActionsField(props: {
     }
 
     const reject = async () => {
-        console.log("will reject ... testing... ");
-        await new Promise<void>((resolve) => {
-            setTimeout(resolve, 1000);
-        });
+        await rejectDeliveryNote(note.noteId);
     }
 
     const approveEdited = async () => {
-        console.log("will approve edited ... testing... ");
+
         await approveDeliveryNote({
             ...note,
             isCourtesy: !note.isCourtesy, // para testear vamos a poner cómo diff que cambia el valor de cortesía
