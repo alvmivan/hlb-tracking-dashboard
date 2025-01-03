@@ -2,13 +2,13 @@
     approveDeliveryNote,
     DeliveryNoteFullData, rejectDeliveryNote
 } from "../lib/hlb-api-library/src/deliveryNotes/domain/deliveryNotesService.ts";
-import "../Buttons.css"
+
 import {LocalizedLabel} from "../Localization/LocalizedLabel.tsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheck, faPen, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {useModal} from "../Modal/ModalContext.tsx";
 import {useLoading} from "../Loading/LoadingContext.tsx";
-import {ReactNode} from "react";
+
 
 
 export function ActionsField(props: {
