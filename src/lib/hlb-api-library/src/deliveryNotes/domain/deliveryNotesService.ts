@@ -98,3 +98,17 @@ export async function approveDeliveryNote(note: ApprovedDeliveryNoteData): Promi
     const {validationId} = await response.json();
     return validationId;
 }
+ 
+ 
+export async function rejectDeliveryNote(noteId: number): Promise<void> {
+    const ApiUrl = AppConfig.get("API_URL");
+    const DELIVERY_NOTES_URL = `${ApiUrl}/delivery-notes`;
+    const rejectDeliveryNoteEndpoint = DELIVERY_NOTES_URL + "/reject"
+    const response = await fetchAuthenticated(rejectDeliveryNoteEndpoint, 'POST', {noteId});
+    
+    if (response.status === 500) {
+        console.error(`Error rejecting delivery note with id ${noteId}`);
+        return;
+    }
+    await handleError(response);
+}

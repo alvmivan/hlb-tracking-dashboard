@@ -79,7 +79,7 @@ async function createClients(): Promise<{ companyId: number }[]> {
         "Atlas Node Technologies",
         "Eclipse Aura Inc."
     ];
-    
+
     const testCiudades = [
         "Bahia Blanca",
         "Monte Hermoso",
@@ -137,15 +137,13 @@ async function createOperations(dumpsters: DumpsterData[]): Promise<DeliveryNote
     let currentAmount = Math.floor(Math.random() * amountOfOperationsPerDeliveryNote) + 1;
 
     function getRandomStatusChange(operationTypeId: number) {
-        const noChange = undefined;
         const options: (string | undefined)[] = [
-           noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange, noChange,
             "GOOD",
             "BURNED", "BURNED", "BURNED", "BURNED",
             "NEED_REPAIR", "NEED_REPAIR", "NEED_REPAIR", "NEED_REPAIR", "NEED_REPAIR", "NEED_REPAIR",
         ]
         // use operationTypeId as a seed to create a random  in range of the options array
-        const randomIndex = ((10000019 ^ operationTypeId) * 13713429807 ) % options.length;
+        const randomIndex = ((10000019 ^ operationTypeId) * 13713429807) % options.length;
         return options[randomIndex];
     }
 

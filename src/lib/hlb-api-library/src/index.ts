@@ -6,6 +6,7 @@ import {registerClientFlow} from "./companies/test/testCompanyService";
 import {createSomeDumpstersAndModifyThemThenAskForThem} from "./dumpsters/test/testDumpsters";
 import {eraseBackend} from "./shared/testUtils";
 import {createSomeDeliveryNotes} from "./deliveryNotes/test/createSomeDeliveryNotes";
+import {seederForDemo} from "./seeding/seederForDemo";
 
 
 const functions = {
@@ -15,7 +16,8 @@ const functions = {
     // loginUserFlow,
     // registerClientFlow,
     //createSomeDumpstersAndModifyThemThenAskForThem,
-    createSomeDeliveryNotes: createSomeDeliveryNotes
+    // createSomeDeliveryNotes: createSomeDeliveryNotes,
+    seederForDemo: seederForDemo
 }
 
 
