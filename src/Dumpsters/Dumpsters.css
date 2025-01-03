@@ -17,7 +17,7 @@
 }
 
 .dumpster-selection-column-container {
-    width: min(max(210px, 15%), 20%);
+    width: min(max(210px, 20%), 33%);
 }
 
 .dumpster-state-label {
